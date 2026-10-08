@@ -1,0 +1,7 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/elementor-4141", "destination": "/seguros/", "permanent": true },
+    { "source": "/elementor-4141/", "destination": "/seguros/", "permanent": true }
+  ]
+}

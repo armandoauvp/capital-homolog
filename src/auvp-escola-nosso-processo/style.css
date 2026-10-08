@@ -1,0 +1,158 @@
+/* Página AUVP Escola – Nosso processo (rascunho do site original, com placeholders) */
+
+/* Hero */
+.np-hero { position: relative; padding: 240px var(--gutter) 120px; background: #1c1c1c; text-align: center; }
+.np-hero__inner { max-width: 1200px; margin-inline: auto; }
+.np-hero h1 { margin: 0 0 20px; font: 400 51px/1 "DM Serif Text", serif; color: #fff; }
+.np-hero h2 { max-width: 900px; margin: 0 auto; font: 300 24px/36px "Anek Latin", sans-serif; color: #fff; }
+
+/* Um sistema completo */
+.np-system { padding: 120px var(--gutter); }
+.np-system__inner { max-width: 1200px; margin-inline: auto; display: flex; gap: 30px; }
+.np-system__media, .np-system__text { flex: 1 1 50%; }
+.np-system__media { background: #f4f4f4; align-self: flex-start; }
+.np-system__media img { width: 100%; opacity: .1; }
+.np-system__text { display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.np-system__text h1 { margin: 0; font: 400 40px/1 "DM Serif Text", serif; color: #4c4c4c; }
+.np-system__text h2 { margin: 0; font: 300 17px/36px "Anek Latin", sans-serif; color: #515151; }
+
+@media (max-width: 1024px) {
+  .np-hero { padding-top: 200px; }
+  .np-hero h1 { font-size: 48px; }
+  .np-system__inner { flex-direction: column; }
+  .np-system__media { align-self: stretch; max-width: 585px; width: 100%; margin-inline: auto; }
+  .np-system__text { text-align: center; }
+  .np-system__text h1 { font-size: 48px; }
+}
+@media (max-width: 767px) {
+  .np-hero { padding: 120px var(--gutter) 72px; }
+  .np-hero h1 { font-size: 24px; }
+  .np-hero h2 { font-size: 20px; line-height: 1.5; }
+  .np-system { padding: 72px var(--gutter); }
+  .np-system__text h1 { font-size: 24px; }
+  .np-system__text h2 { font-size: 20px; line-height: 1.5; }
+}
+
+/* ===== Widget portado (regras originais, só escopadas em .np-widget) ===== */
+.np-widget {
+  --primary-gold: #efbf4e;
+  --primary-gold-dark: #d4a73d;
+  --bg-dark: #0a0a0a;
+  --text-dark: #18181b;
+  --text-muted: #52525b;
+  --border-subtle: rgba(0, 0, 0, .08);
+  --apple-ease: cubic-bezier(.16, 1, .3, 1);
+  --font-title: "DM Serif Text", serif;
+  --font-sans: "Anek Latin", sans-serif;
+  --font-body: "Roboto", sans-serif;
+  font-family: var(--font-body);
+}
+.np-widget * { box-sizing: border-box; }
+
+/* Layout principal (sistema de dobras) */
+.np-widget .fold { width: 100%; padding: 120px 0; }
+.np-widget .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Alternância de cores (dobra x card) */
+.np-widget .fold-white { background-color: #fff; }
+.np-widget .fold-gray { background-color: #f6f6f6; }
+.np-widget .fold-white .three-col-card,
+.np-widget .fold-white .dobra-item { background-color: #f6f6f6; }
+.np-widget .fold-gray .three-col-card,
+.np-widget .fold-gray .dobra-item { background-color: #fff; }
+
+/* Animação de entrada */
+.np-widget .animate-item {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity .8s var(--apple-ease), transform .8s var(--apple-ease);
+}
+.np-widget .animate-item.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .np-widget .animate-item { opacity: 1; transform: none; transition: none; }
+}
+
+/* Grid de 3 colunas (dobra 1) */
+.np-widget .three-col-header { display: grid; grid-template-columns: 1.2fr .8fr; gap: 60px; align-items: start; margin-bottom: 60px; }
+.np-widget .three-col-header h2 {
+  font-family: var(--font-title); font-size: clamp(32px, 4vw, 48px); font-weight: 400;
+  color: var(--text-dark); margin: 0; line-height: 1.1; letter-spacing: -.5px;
+}
+.np-widget .three-col-header p { font-size: 16px; color: var(--text-muted); line-height: 1.6; margin: 0; padding-top: 8px; }
+.np-widget .three-col-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.np-widget .three-col-card { display: flex; flex-direction: column; border-radius: 0; border: 1px solid var(--border-subtle); }
+.np-widget .three-col-card img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
+  border-radius: 0; border-bottom: 1px solid var(--border-subtle);
+}
+.np-widget .three-col-content { padding: 32px 24px; flex-grow: 1; }
+.np-widget .three-col-title { font-family: var(--font-title); font-size: 22px; font-weight: 400; color: var(--text-dark); margin: 0 0 16px; line-height: 1.2; }
+.np-widget .three-col-desc { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin: 0; }
+.np-widget .three-col-desc strong { color: var(--text-dark); font-weight: 700; }
+.np-widget .three-col-desc + .three-col-desc { margin-top: 12px; }
+
+/* Estrutura das demais dobras */
+.np-widget .dobra-item {
+  border: 1px solid var(--border-subtle); padding: 60px; border-radius: 0;
+  display: flex; flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .01), 0 10px 15px -3px rgba(0, 0, 0, .01);
+}
+
+/* Lado a lado (aulas ao vivo) */
+.np-widget .split-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: center; }
+.np-widget .split-visual { width: 100%; border: 1px solid var(--border-subtle); overflow: hidden; position: relative; }
+.np-widget .split-visual img { width: 100%; height: auto; display: block; object-fit: cover; }
+.np-widget .split-visual .step-pill {
+  position: absolute; top: 24px; right: 24px; margin: 0; z-index: 10;
+  background-color: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+.np-widget .split-content { display: flex; flex-direction: column; justify-content: center; }
+
+/* Textos das dobras */
+.np-widget .step-pill {
+  display: inline-block; background-color: rgba(239, 191, 78, .15); color: var(--primary-gold-dark);
+  font-family: var(--font-sans); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px;
+  padding: 8px 16px; margin-bottom: 24px; border-radius: 0; align-self: flex-start;
+}
+.np-widget .dobra-title {
+  font-family: var(--font-title); color: var(--text-dark); font-size: clamp(24px, 3vw, 32px); font-weight: 400;
+  margin: 0 0 16px; line-height: 1.2; letter-spacing: -.5px;
+}
+.np-widget .dobra-desc { color: var(--text-muted); font-size: 16px; line-height: 1.6; margin: 0 0 16px; max-width: 900px; }
+.np-widget .dobra-desc:last-of-type { margin-bottom: 0; }
+.np-widget .dobra-desc strong { color: var(--text-dark); font-weight: 700; }
+
+/* Lista de ferramentas */
+.np-widget .feature-list { display: flex; flex-direction: column; width: 100%; }
+.np-widget .feature-list-item {
+  display: grid; grid-template-columns: 320px 1fr; gap: 60px; padding: 40px 0;
+  border-bottom: 1px solid var(--border-subtle); align-items: start;
+}
+.np-widget .feature-list-item:first-child { border-top: 1px solid var(--border-subtle); }
+.np-widget .feature-list-title { font-family: var(--font-title); font-size: 28px; font-weight: 400; color: var(--text-dark); line-height: 1.3; margin: 0; letter-spacing: -.5px; }
+.np-widget .feature-list-desc { color: var(--text-muted); font-size: 16px; line-height: 1.6; margin: 0; }
+.np-widget .feature-list-desc p { margin: 0 0 12px; }
+.np-widget .feature-list-desc p:last-child { margin-bottom: 0; }
+
+/* Card garantia */
+.np-widget .garantia-card { flex-direction: row; align-items: center; gap: 48px; }
+.np-widget .garantia-content { flex: 1; }
+.np-widget .garantia-seal { width: 80px; margin-bottom: 24px; border-radius: 0; }
+.np-widget .garantia-visual { flex: 1.5; display: flex; justify-content: flex-end; margin-top: 0; border: none; background: transparent; }
+.np-widget .garantia-visual img { width: 100%; max-width: 600px; border: 1px solid var(--border-subtle); border-radius: 0; }
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .np-widget .three-col-header { grid-template-columns: 1fr; gap: 24px; }
+  .np-widget .three-col-grid { grid-template-columns: repeat(2, 1fr); }
+  .np-widget .split-layout { grid-template-columns: 1fr; gap: 40px; }
+  .np-widget .feature-list-item { grid-template-columns: 250px 1fr; gap: 40px; }
+  .np-widget .garantia-card { flex-direction: column; text-align: center; }
+  .np-widget .garantia-seal { margin-inline: auto; }
+  .np-widget .garantia-visual { justify-content: center; width: 100%; }
+}
+@media (max-width: 767px) {
+  .np-widget .container { max-width: 300px; padding: 0; }
+  .np-widget .three-col-grid { grid-template-columns: 1fr; }
+  .np-widget .dobra-item { padding: 32px 20px; }
+  .np-widget .feature-list-item { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+}

@@ -1,0 +1,43 @@
+/* Topo com foto de prédios, sobreposição preta e o título da página */
+.conta-hero {
+  position: relative;
+  padding: 236px var(--gutter) 116px;
+  background: #000 url("/wp-content/uploads/2025/08/arranha-ceus-modernos-comuns-negocio-arranha-ceus-arquitetura-que-levanta-ao-ceu-conceitos-scaled-1.jpg") center / cover no-repeat;
+}
+.conta-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .68); }
+.conta-hero__content { position: relative; max-width: var(--container); margin-inline: auto; text-align: center; }
+.conta-hero h1 { margin: 0; font: 600 54px/1.2 var(--font-head); color: var(--white); }
+
+/* Área onde o app externo (#root) é montado */
+.conta-app { background: var(--white); padding: 30px var(--gutter) 45px; }
+/* Acima de 1366px o Elementor deixava o widget com a largura do conteúdo (~768px); abaixo, até 1210px */
+.conta-app #root { width: fit-content; max-width: 1210px; margin-inline: auto; }
+
+@media (max-width: 1366px) {
+  .conta-app #root { width: 100%; }
+}
+
+@media (max-width: 1024px) {
+  .conta-hero { padding-top: 200px; }
+  .conta-hero h1 { font-size: 48px; }
+}
+
+@media (max-width: 767px) {
+  .conta-hero { padding: 136px var(--gutter) 72px; }
+  .conta-hero::before { background: rgba(0, 0, 0, .81); }
+  .conta-hero h1 { font-size: 26px; }
+  /* O app já tem recuo lateral próprio (px-4); somado a este, os campos ficavam com metade da tela. */
+  .conta-app { padding: 0 0 80px; }
+}
+
+/* Ajustes no app externo (classes Tailwind do bundle da Supernova; revisar se o bundle mudar). */
+@media (max-width: 640px) {
+  /* Card externo vira só agrupamento; o card interno de cada bloco mantém a moldura. */
+  .conta-app #root .rounded-xl.border.p-6 { padding: 0; border: 0; box-shadow: none; background: transparent; }
+  .conta-app #root .bg-card.p-8 { padding: 20px 16px; }
+  /* 16px evita o zoom automático do iOS ao tocar no campo. */
+  .conta-app #root input, .conta-app #root textarea, .conta-app #root select { font-size: 16px; }
+}
+/* Seletores com texto longo ("SELECIONE O ESTADO") não vazam da caixa. */
+.conta-app #root button[role="combobox"] { min-width: 0; max-width: 100%; }
+.conta-app #root button[role="combobox"] > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }

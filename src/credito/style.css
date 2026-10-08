@@ -1,0 +1,241 @@
+/* Página AUVP Crédito */
+.cr-wrap { max-width: calc(1260px + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+.cr-wrap--wide { max-width: calc(1280px + 2 * var(--gutter)); }
+
+/* .ds-title tem entrelinha menor que a do original (80px); a margem devolve o respiro */
+.cr-title { margin: 15px 0; }
+
+/* Linha com CTA centralizado */
+.cr-actions { display: flex; justify-content: center; }
+
+/* Hero */
+.cr-hero {
+  position: relative; min-height: 895px; padding: 236px var(--gutter) 200px;
+  background: var(--black) url("/wp-content/uploads/2025/03/CARTo.jpg") center / cover no-repeat;
+}
+.cr-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .68); }
+.cr-hero__inner { position: relative; max-width: 1200px; margin-inline: auto; }
+.cr-hero__kicker { margin: 0 0 20px; font: 300 26px/1 var(--font-head); color: var(--white); }
+.cr-hero__kicker b { font-weight: 600; }
+.cr-hero__title { max-width: 725px; margin: 0 0 20px; font: 600 51px/1 var(--font-head); color: var(--white); }
+.cr-hero__text { max-width: 800px; margin: 0; font: 300 24px/36px var(--font-head); color: var(--white); }
+.cr-hero__btn { margin-top: 30px; }
+
+/* Por que escolher */
+.cr-why { padding: 72px 0 80px; }
+.cr-why .cr-title { margin-bottom: 33px; }
+.cr-lead { margin: 0 0 32px; text-align: center; font: 300 23px/36px var(--font-head); color: var(--color-title); }
+
+/* Widget cards de benefícios (equivalente às classes Tailwind do original) */
+.cards-de-beneficios { font-family: var(--font-body); display: grid; grid-template-columns: 1fr; gap: 32px; width: 100%; }
+.cb-card { display: flex; align-items: flex-start; gap: 20px; padding: 32px; background: #f5f5f5; border-radius: 12px; }
+.cb-card h3 { margin: 0; font-size: 20px; line-height: 28px; font-weight: 600; color: #111827; }
+.cb-card p { margin: 4px 0 0; font-size: 16px; line-height: 24px; color: #4b5563; }
+/* sem flex:none de propósito: no original o ícone encolhe quando o texto é longo */
+.icon-minimalista { width: 36px; height: 36px; color: #555; }
+@media (min-width: 640px) { .cards-de-beneficios { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .cards-de-beneficios { grid-template-columns: repeat(3, 1fr); } }
+
+/* Como funciona */
+.cr-process { padding: 60px 0; background: var(--surface-soft); }
+
+/* Widget linha do tempo horizontal */
+.cea-timeline-wrapper { font-family: var(--font-body); width: 84%; margin: 24px auto 0; }
+.cea-timeline {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; gap: 64px; /* espaço mínimo entre módulos */
+  position: relative;
+}
+.cea-timeline::before { /* linha horizontal */
+  content: ""; position: absolute;
+  top: 30px; left: 0; width: 100%; height: 2px; background: #bfbfbf;
+}
+.cea-timeline li { position: relative; flex: 0 0 220px; text-align: left; padding-left: 40px; }
+.cea-dot {
+  position: absolute; top: 21px; left: 0; width: 18px; height: 18px;
+  border-radius: 50%; background: #6e6e6e; border: 3px solid var(--white); z-index: 1;
+}
+.cea-label { margin-top: 44px; display: flex; flex-direction: column; gap: 4px; }
+.cea-title { font-size: 20px; font-weight: 600; color: #1f1f1f; text-transform: uppercase; }
+.cea-desc { font-size: 18px; font-weight: 400; color: #4a4a4a; line-height: 1.35; }
+
+/* Widget linha do tempo vertical */
+.cea-timeline-mobile-wrapper {
+  font-family: var(--font-body);
+  width: 84%; margin: 24px auto 0; padding: 20px 10px;
+}
+.cea-timeline-mobile { list-style: none; margin: 0; padding: 0; position: relative; }
+.cea-timeline-mobile::before { /* linha guia vertical */
+  content: ""; position: absolute; top: 10px; bottom: 10px; left: 8px; width: 2px; background-color: #bfbfbf;
+}
+.cea-timeline-mobile li { position: relative; padding-left: 40px; margin-bottom: 32px; }
+.cea-timeline-mobile li:last-child { margin-bottom: 0; }
+.cea-dot-mobile {
+  position: absolute; top: 3px; left: 0; width: 18px; height: 18px;
+  border-radius: 50%; background: #6e6e6e; border: 3px solid var(--white); z-index: 1;
+}
+.cea-label-mobile { display: flex; flex-direction: column; gap: 4px; }
+.cea-title-mobile { font-size: 20px; font-weight: 600; color: #1f1f1f; text-transform: uppercase; line-height: 1.2; }
+.cea-desc-mobile { font-size: 18px; font-weight: 400; color: #4a4a4a; line-height: 1.35; }
+
+/* No original a versão horizontal só aparece acima do breakpoint "notebook" (1366px) */
+@media (min-width: 1367px) { .cea-timeline-mobile-wrapper { display: none; } }
+@media (max-width: 1366px) { .cea-timeline-wrapper { display: none; } }
+
+/* Crédito sob medida */
+.cr-goals { padding: 60px 0 70px; }
+.cr-goals__row { display: grid; gap: 32px; margin-top: 30px; }
+.cr-goals__row + .cr-goals__row { margin-top: 40px; }
+.cr-goals__row--3 { grid-template-columns: repeat(3, 1fr); }
+.cr-goals__row--2 { grid-template-columns: repeat(2, 1fr); }
+.cr-goal {
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+  padding: 30px 30px 15px; background: var(--surface); border-radius: 12px; text-align: center;
+}
+.cr-goal h2 { margin: 0; font: 600 20px/1.2 var(--font-head); color: var(--color-body); }
+.cr-goal p, .cr-goal h3 { margin: 0 0 14px; font: 400 17px/1.5 var(--font-body); color: var(--color-body); }
+.cr-goal h3 { line-height: 1.25; }
+.cr-goals__actions { margin-top: 60px; }
+
+/* Comparativo */
+.cr-compare { padding: 60px 0; background: var(--surface-soft); }
+.cr-compare__top { display: flex; gap: 20px; }
+.cr-compare__intro { flex: 0 0 59%; display: flex; flex-direction: column; gap: 20px; }
+.cr-compare__title { margin: 0; line-height: 52px; }
+.cr-compare__text { margin: 0; font: 300 23px/36px var(--font-head); color: var(--color-title); }
+.cr-compare__rates { flex: 1; display: flex; flex-direction: column; gap: 20px; margin-left: 60px; }
+.cr-compare__rates p { margin: 0; }
+.cr-rates__title { font: 600 26px/20px var(--font-btn); color: var(--color-title); }
+.cr-rates__title strong { font-weight: 700; }
+.cr-rates__auvp { font: 300 20px/32px var(--font-body); color: #266817; }
+.cr-rates__market p { font: 300 20px/30px var(--font-body); color: #913d3d; }
+.cr-compare__rates b { font-weight: 400; }
+.cr-compare__actions { margin-top: 80px; }
+
+/* Widget tabela comparativa */
+.comparativo-auvp {
+  width: 100%; margin-top: 35px; border-collapse: collapse;
+  font-family: var(--font-body); font-size: 15px; text-align: center; table-layout: fixed;
+}
+.comparativo-auvp th, .comparativo-auvp td { padding: 14px 10px; border: none; }
+.comparativo-auvp thead th { font-size: 18px; font-weight: 600; vertical-align: middle; }
+.comparativo-auvp .col-auvp { background-color: #d5e1da; }
+.comparativo-auvp .col-banco { background-color: #e9c1c1; vertical-align: middle; font-size: 17px; font-weight: 500; }
+.comparativo-auvp tbody tr:nth-child(even) { background-color: #f9f9f9; }
+.comparativo-auvp tbody tr:nth-child(odd) { background-color: var(--white); }
+/* o tema do WordPress escurecia levemente as células das linhas ímpares */
+.comparativo-auvp tbody tr:nth-child(odd) > td { background-color: rgba(128, 128, 128, .07); }
+.comparativo-auvp .check, .comparativo-auvp .cross { font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "Apple Symbols", sans-serif; }
+.comparativo-auvp .check { color: #28a745; font-size: 20px; }
+.comparativo-auvp .cross { color: #dc3545; font-size: 20px; }
+.comparativo-auvp img { display: block; margin: 0 auto; width: auto; height: 60px; max-height: 60px; }
+
+@media (max-width: 768px) {
+  .comparativo-auvp thead { display: none; }
+  .comparativo-auvp tbody tr {
+    display: flex; flex-direction: column; background: var(--white); margin-bottom: 12px;
+    border-radius: 12px; box-shadow: 0 2px 5px rgba(0, 0, 0, .05); overflow: hidden; width: 100%;
+  }
+  .comparativo-auvp tbody td { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; }
+  .comparativo-auvp tbody tr > td:first-child { background: var(--surface); font-weight: 600; text-align: left; }
+  .comparativo-auvp tbody td:nth-child(2)::before { content: "AUVP"; font-size: 13px; color: #3b6d4f; margin-right: 8px; }
+  .comparativo-auvp tbody td:nth-child(3)::before { content: "Banco Tradicional"; font-size: 13px; color: #b05b5b; margin-right: 8px; }
+}
+
+/* Garantia de imóvel */
+.cr-home-equity { padding: 60px 0; }
+.cr-home-equity__title { margin: 0 0 20px; text-align: center; font: 600 46px/48px var(--font-head); color: var(--color-title); }
+.cr-home-equity__text { margin: 0 0 40px; text-align: center; font: 300 24px/1.5 var(--font-head); color: var(--color-text); }
+.cr-home-equity__cards { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; }
+.cr-he-card {
+  flex: 0 1 400px; min-height: 86px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 30px; background: #e7e7e7; border-radius: 12px; text-align: center;
+}
+.cr-he-card svg { width: 22px; height: 22px; fill: var(--color-title); }
+.cr-he-card p { margin: 10px 0 14px; font: 400 18px/1.5 var(--font-body); color: var(--color-body); }
+
+/* CTA final */
+.cr-cta {
+  position: relative; padding: 300px 90px 90px; color: var(--white);
+  background: var(--black) url("/wp-content/uploads/2025/03/photo-1476514525535-07fb3b4ae5f1.avif") center / cover no-repeat;
+}
+.cr-cta::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .8); }
+.cr-cta__inner { position: relative; max-width: 1200px; margin-inline: auto; }
+.cr-cta__title { margin: 0 0 20px; line-height: 1.2; }
+.cr-cta__text { margin: 0; font: 300 24px/36px var(--font-head); color: var(--white); }
+.cr-cta__btn { margin-top: 32px; }
+.cr-sources__head { display: flex; align-items: center; gap: 20px; margin-top: 200px; }
+.cr-sources__head h2 { margin: 0; font: 300 24px/36px var(--font-head); color: var(--white); }
+.cr-sources__line { flex: 1; border-top: 1px solid var(--white); }
+.cr-sources { margin-top: 22px; font: 400 13px/1.5 var(--font-body); color: var(--white); }
+.cr-sources p { margin: 0; }
+.cr-sources a { color: inherit; text-decoration: none; }
+.cr-sources a:hover { text-decoration: underline; }
+.cr-sources__divider { margin: 30px 0 24px; border: 0; border-top: 1px solid var(--white); }
+.cr-disclaimer { margin: 0; font: 300 13px/18px var(--font-head); color: var(--white); }
+
+/* Notebook/tablet */
+@media (max-width: 1024px) {
+  .cr-hero { min-height: 0; padding: 200px var(--gutter) 140px; }
+  .cr-hero__inner { text-align: center; }
+  .cr-hero__kicker { font-size: 24px; }
+  .cr-hero__title { max-width: none; font-size: 48px; }
+  .cr-hero__text { max-width: none; }
+
+  .cr-goals__row--3 { grid-template-columns: 1fr 1fr; }
+  .cr-goal h2 { font-size: 25px; }
+
+  .cr-compare__top { flex-direction: column; gap: 32px; }
+  .cr-compare__intro { flex-basis: auto; }
+  .cr-compare__title { line-height: 1.3; }
+  .cr-compare__rates { margin-left: 0; }
+
+  .cr-home-equity__title { font-size: 45px; }
+  .cr-home-equity__cards { flex-wrap: wrap; }
+
+  .cr-cta { padding: 60px; background-position: bottom center; }
+  .cr-cta__title { max-width: 372px; }
+}
+
+/* Celular */
+@media (max-width: 767px) {
+  .cr-hero { padding: 120px var(--gutter) 72px; }
+  .cr-hero::before { background: rgba(0, 0, 0, .81); }
+  .cr-hero__kicker { font-size: 20px; }
+  .cr-hero__title { font-size: 24px; }
+  .cr-hero__text { font-size: 20px; line-height: 1.5; }
+
+  .cr-why { padding: 0 0 40px; }
+  .cr-why .cr-title { margin: 32px 0 20px; }
+  .cr-lead { padding: 0 20px 40px; margin: 0; font-size: 20px; line-height: 1.3; }
+
+  .cr-process { padding: 30px 0; }
+  .cr-process .cr-title { margin: 0 6px; text-align: left; }
+  .cea-timeline-mobile-wrapper { width: 100%; }
+
+  .cr-goals { padding: 30px 0 60px; }
+  .cr-goals .cr-title { margin: 0; text-align: left; }
+  .cr-goals__row--3, .cr-goals__row--2 { grid-template-columns: 1fr; }
+  .cr-goals__row + .cr-goals__row { margin-top: 32px; }
+  .cr-goal { align-items: flex-start; padding: 30px; text-align: left; }
+  .cr-goal h2 { font-size: 21px; }
+  .cr-goal p, .cr-goal h3 { font-size: 16px; }
+  .cr-goals__actions { margin-top: 40px; }
+
+  .cr-compare { padding: 30px 0 60px; }
+  .cr-compare__text { font-size: 20px; line-height: 1.3; }
+  .cr-compare__actions { margin-top: 40px; }
+
+  .cr-home-equity { padding: 30px 0; }
+  .cr-home-equity__title { text-align: left; font-size: 28px; line-height: 1.2; }
+  .cr-home-equity__text { text-align: left; font-size: 20px; }
+  .cr-home-equity__cards { flex-direction: column; gap: 16px; }
+  .cr-he-card { flex-basis: auto; }
+  .cr-he-card p { font-size: 16px; }
+
+  .cr-cta { padding: 80px 20px; }
+  .cr-cta__title { max-width: none; line-height: 1.3; }
+  .cr-cta__text { font-size: 20px; line-height: 1.3; }
+  .cr-sources__head { margin-top: 120px; }
+  .cr-sources__head h2 { font-size: 20px; }
+}

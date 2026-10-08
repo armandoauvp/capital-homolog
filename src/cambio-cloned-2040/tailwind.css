@@ -1,0 +1,6 @@
+/* Utilitários Tailwind da página (mesma config da página cambio). Cada página tem o seu arquivo para o
+   Tailwind entrar no CSS da própria página, depois do style.css, como no dev. */
+@config "../cambio/tailwind.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

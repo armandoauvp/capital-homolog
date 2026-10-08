@@ -1,0 +1,242 @@
+/* Design system AUVP Capital: tokens, reset, cabeçalho, rodapé e componentes comuns.
+   Páginas não devem redeclarar cores/botões/animações daqui; use os tokens e as classes. */
+:root {
+  /* Cores */
+  --color-title: #0b2904;       /* títulos e texto de botão no hover */
+  --color-text: #3b4d2a;        /* texto verde de apoio */
+  --color-body: #2f2f2f;        /* texto corrido */
+  --green-900: #023619;
+  --green-700: #255f45;
+  --green-border: #3b4d2a;
+  --gold: #efbe4f;
+  --surface: #f0f0f0;           /* cards, FAQ */
+  --surface-soft: #fafafa;
+  --surface-dark: #1c1c1c;     /* cards escuros */
+  --border: #e5e7eb;            /* bordas de campos e divisórias */
+  --border-strong: #d1d5db;
+  --color-error: #dc2626;
+  --color-success: #16a34a;
+  --gray-700: #444444;
+  --gray-500: #7a7a7a;
+  --gray-100: #f2f2f2;
+  --black: #000000;
+  --white: #ffffff;
+  --gradient-primary: linear-gradient(233deg, #023619 3%, #255f45 100%);
+  --gradient-light: linear-gradient(180deg, #f0f0f0 0%, #ffffff 100%);
+
+  /* Tipografia */
+  --font-head: "Anek Latin", "Roboto", system-ui, sans-serif;
+  --font-body: "Anek Latin", "Roboto", system-ui, sans-serif;
+  --font-btn: "Sora", "Anek Latin", system-ui, sans-serif;
+
+  /* Layout e movimento */
+  --container: 1200px;
+  --gutter: 24px;
+  --radius: 8px;
+  --duration: .3s;
+  --ease: ease;
+  --lift: -8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--gray-700);
+  background: var(--white);
+  overflow-x: hidden;
+}
+img, svg, video, iframe { max-width: 100%; }
+img { height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-head); line-height: 1.15; margin: 0 0 .5em; }
+p { margin: 0 0 1em; }
+
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Botões — padrão único do site.
+   Variantes: .btn--primary (gradiente verde), .btn--outline (contorno claro, sobre fundo escuro),
+   .btn--outline-dark (contorno verde, sobre fundo claro).
+   Tamanhos: padrão (largura do conteúdo), .btn--lg (CTA 500×60, 317 no tablet, 100% no mobile), .btn--block (100%). Caixa alta: .btn--caps.
+   Hover/foco: fundo claro, texto verde-escuro e sobe 8px. */
+.btn {
+  position: relative; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  max-width: 100%; min-height: 54px; padding: 18px 24px;
+  border: 1px solid transparent; border-radius: 0; background: transparent;
+  font: 600 16px/1.2 var(--font-btn); text-align: center; text-decoration: none; text-transform: none;
+  color: var(--white); cursor: pointer;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease),
+    background-color var(--duration) var(--ease), transform var(--duration) var(--ease);
+}
+/* Gradiente não anima; o fundo do hover entra por uma camada com opacidade. */
+.btn::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--gradient-light); opacity: 0; transition: opacity var(--duration) var(--ease);
+}
+.btn:hover, .btn:focus-visible { color: var(--color-title); transform: translateY(var(--lift)); }
+.btn:hover::before, .btn:focus-visible::before { opacity: 1; }
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+
+.btn--primary { background: var(--gradient-primary); border-color: var(--green-border); }
+.btn--outline { border-color: var(--white); }
+.btn--outline-dark { border-color: var(--color-title); color: var(--color-title); }
+.btn--outline-dark::before { background: var(--gradient-primary); }
+.btn--outline-dark:hover, .btn--outline-dark:focus-visible { color: var(--white); }
+
+.btn--caps { text-transform: uppercase; }
+.btn--lg { width: 500px; min-height: 60px; }
+.btn--block { display: flex; width: 100%; }
+
+@media (max-width: 1024px) {
+  .btn { font-size: 12px; }
+  .btn--lg { width: 317px; }
+}
+@media (max-width: 767px) {
+  .btn { font-size: 14px; }
+  .btn--lg { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover, .btn:focus-visible { transform: none; }
+}
+
+/* Cabeçalho (sobreposto ao primeiro bloco da página; use .site-header--solid para fundo preto) */
+.site-header { position: absolute; inset: 0 0 auto; z-index: 50; padding: 32px var(--gutter) 0; color: var(--white); }
+.site-header--solid { position: relative; background: var(--black); padding-bottom: 24px; }
+.site-header__inner { max-width: 960px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.site-header__logo img { width: 136px; height: auto; }
+.site-header__toggle { display: none; background: none; border: 0; padding: 8px; cursor: pointer; }
+.site-header__toggle span { display: block; width: 24px; height: 2px; margin: 5px 0; background: var(--white); transition: transform .2s, opacity .2s; }
+.site-nav__list { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
+.site-nav__item { position: relative; }
+.site-nav__item + .site-nav__item::before { content: ""; position: absolute; left: 0; top: 50%; height: 16px; margin-top: -8px; border-left: 1px solid rgba(255, 255, 255, .35); }
+.site-nav__item > a, .site-nav__trigger {
+  display: flex; align-items: center; gap: 10px; padding: 8px 16px;
+  font: 500 16px/1 var(--font-head); color: var(--white); text-decoration: none; background: none; border: 0; cursor: pointer;
+}
+.site-nav__trigger::after { content: ""; border: 5px solid transparent; border-top: 6px solid currentColor; border-bottom: 0; }
+.site-nav__sub {
+  list-style: none; margin: 0; padding: 8px 0; min-width: 200px;
+  position: absolute; top: 100%; left: 8px; background: var(--white); box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+  opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .15s, transform .15s, visibility .15s;
+}
+.site-nav__sub a { display: block; padding: 10px 20px; color: var(--gray-700); text-decoration: none; font: 500 15px/1.2 var(--font-head); }
+.site-nav__sub a:hover { background: var(--gray-100); color: var(--green-900); }
+.site-nav__item.has-sub:hover > .site-nav__sub,
+.site-nav__item.has-sub:focus-within > .site-nav__sub,
+.site-nav__item.is-open > .site-nav__sub { opacity: 1; visibility: visible; transform: none; }
+
+@media (max-width: 1024px) {
+  .site-header { padding-top: 16px; }
+  .site-header__toggle { display: block; }
+  .site-nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--black); display: none; padding: 8px var(--gutter) 16px; }
+  .site-header.is-open .site-nav { display: block; }
+  .site-header.is-open .site-header__toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .site-header.is-open .site-header__toggle span:nth-child(2) { opacity: 0; }
+  .site-header.is-open .site-header__toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .site-nav__list { flex-direction: column; align-items: stretch; }
+  .site-nav__item + .site-nav__item::before { display: none; }
+  .site-nav__item > a, .site-nav__trigger { width: 100%; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+  .site-nav__sub { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: transparent; padding: 0 0 8px 12px; }
+  .site-nav__item.has-sub:hover > .site-nav__sub { display: none; }
+  .site-nav__item.is-open > .site-nav__sub { display: block; }
+  .site-nav__sub a { color: rgba(255, 255, 255, .85); }
+  .site-nav__sub a:hover { background: transparent; color: var(--gold); }
+}
+
+/* Rodapé */
+.site-footer { background: var(--black); color: var(--white); padding: 80px var(--gutter) 120px; }
+.site-footer__inner { max-width: 1600px; margin-inline: auto; padding-inline: 8%; display: grid; grid-template-columns: 2fr 1fr .8fr 1.6fr; gap: 40px; align-items: start; }
+.site-footer__brand img { width: 190px; margin-bottom: 24px; }
+.site-footer__brand p { font: 400 15px/1.6 "Sora", var(--font-body); margin: 0 0 16px; }
+.site-footer__legal { font-size: 13px !important; line-height: 2.2 !important; }
+.site-footer h2 { font: 600 16px/1.2 var(--font-head); color: var(--white); margin: 8px 0 20px; }
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li { margin-bottom: 14px; }
+.site-footer a { color: #d2d2d2; text-decoration: none; font: 500 13px/1.2 "Roboto", sans-serif; display: inline-flex; align-items: center; gap: 6px; }
+.site-footer a:hover { color: var(--gold); }
+.site-footer svg { width: 14px; height: 14px; }
+/* Duas colunas preenchidas de cima para baixo: a ordem do HTML é a ordem de leitura. */
+.site-footer__grid { columns: 2; column-gap: 40px; }
+.site-footer__grid li { break-inside: avoid; }
+@media (max-width: 1024px) {
+  .site-footer__inner { grid-template-columns: 1fr 1fr; padding-inline: 0; }
+  .site-footer__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .site-footer { padding: 56px var(--gutter) 72px; }
+  .site-footer__inner { grid-template-columns: 1fr; }
+}
+
+/* Título de seção */
+.ds-title { font: 600 40px/1.25 var(--font-head); color: var(--color-title); margin: 0 0 24px; }
+.ds-title--light { color: var(--white); }
+.ds-title--center { text-align: center; }
+.ds-title--gold { color: var(--gold); }
+@media (max-width: 1024px) { .ds-title { font-size: 32px; } }
+@media (max-width: 767px) { .ds-title { font-size: 27px; line-height: 1.3; } }
+
+/* FAQ — caixa cinza única com perguntas em <details>.
+   <div class="faq"><details class="faq__item" name="faq"><summary>Pergunta</summary><div class="faq__answer">…</div></details></div>
+   (name igual em todos = só um aberto por vez) */
+.faq { background: var(--surface); border-radius: 12px; padding: 32px 48px; display: grid; gap: 8px; }
+.faq__item summary {
+  position: relative; list-style: none; cursor: pointer; padding: 14px 40px 14px 0;
+  font: 600 22px/1.3 var(--font-head); color: var(--gray-500); transition: color var(--duration) var(--ease);
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary:hover, .faq__item[open] summary { color: #424242; }
+.faq__item summary::after {
+  content: ""; position: absolute; right: 8px; top: 50%; width: 9px; height: 9px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: translateY(-70%) rotate(45deg); transition: transform var(--duration) var(--ease);
+}
+.faq__item[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
+.faq__answer { padding: 0 40px 16px 0; font: 400 20px/1.5 var(--font-body); color: var(--color-text); }
+.faq__answer p { margin: 0 0 12px; }
+.faq__answer p:last-child { margin: 0; }
+.faq__answer a { color: inherit; }
+/* Variante para respostas longas (passo a passo, vídeos). */
+.faq--compact .faq__item summary { font-size: 18px; }
+.faq--compact .faq__answer { font-size: 16px; }
+@media (max-width: 767px) {
+  .faq { padding: 16px 20px; }
+  .faq__item summary { font-size: 18px; padding-right: 32px; }
+  .faq__answer { font-size: 16px; padding-right: 0; }
+}
+
+/* Slideshow de fundo (2 imagens, 5 s cada, fade de .5 s), como o do Elementor.
+   <div class="ds-slideshow"><div class="ds-slideshow__slide" style="background-image:url(…)"></div>×2</div>
+   Coloque dentro de uma seção com position:relative; o conteúdo da seção precisa de position:relative. */
+.ds-slideshow { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+/* Película escura opcional sobre as imagens: .ds-slideshow--dim, intensidade em --slideshow-dim (0 a 1). */
+.ds-slideshow--dim::after { content: ""; position: absolute; inset: 0; background: #000; opacity: var(--slideshow-dim, .68); }
+/* -.5s faz a 1ª imagem já começar visível; a 2ª entra enquanto a 1ª sai. */
+.ds-slideshow__slide { position: absolute; inset: 0; background: center / cover no-repeat; animation: ds-slide 10s infinite -.5s; }
+.ds-slideshow__slide:nth-child(2) { animation-delay: 4.5s; opacity: 0; }
+@keyframes ds-slide {
+  0% { opacity: 0; } 5% { opacity: 1; } 50% { opacity: 1; } 55% { opacity: 0; } 100% { opacity: 0; }
+}
+
+/* Faixa de logos rolando sem fim. Repita o conteúdo duas vezes dentro da trilha.
+   <div class="ds-marquee"><div class="ds-marquee__track">…logos…logos…</div></div> */
+.ds-marquee { overflow: hidden; }
+/* Ajuste por página com --marquee-gap e --marquee-duration. */
+.ds-marquee__track { display: flex; align-items: center; gap: var(--marquee-gap, 64px); width: max-content; animation: ds-marquee var(--marquee-duration, 30s) linear infinite; }
+.ds-marquee:hover .ds-marquee__track { animation-play-state: paused; }
+@keyframes ds-marquee { to { transform: translateX(calc(-50% - var(--marquee-gap, 64px) / 2)); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-slideshow__slide { animation: none; }
+  .ds-slideshow__slide:nth-child(2) { display: none; }
+  .ds-marquee__track { animation: none; }
+}
+
+/* Vídeo responsivo 16:9 */
+.video-embed { position: relative; aspect-ratio: 16 / 9; width: 100%; background: #000; }
+.video-embed iframe, .video-embed video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: contain; }

@@ -1,0 +1,493 @@
+/* ══════════════════════════════════════════════════════════════
+   ISOLAMENTO TOTAL DO ELEMENTOR
+   Nenhum estilo externo deve penetrar ou alterar o #gdb-root.
+   ══════════════════════════════════════════════════════════════ */
+
+/* 1. Box-sizing universal */
+#gdb-root, #gdb-root *, #gdb-root *::before, #gdb-root *::after {
+    box-sizing: border-box !important;
+}
+
+/* 2. Base do wrapper — estilos com !important para bater qualquer injeção do Elementor/tema */
+#gdb-root {
+    overflow-x: clip !important;
+    font-family: 'Inter', sans-serif !important;
+    background-color: rgb(9 9 11) !important;
+    color: rgb(244 244 245) !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+
+    /* Neutraliza as variáveis globais de cor do Elementor dentro deste escopo */
+    --e-global-color-primary:   currentColor;
+    --e-global-color-secondary: currentColor;
+    --e-global-color-text:      currentColor;
+    --e-global-color-accent:    currentColor;
+    --e-global-color-4:         currentColor;
+    --e-global-color-5:         currentColor;
+    --e-global-color-6:         currentColor;
+    /* Variáveis de tipografia do Elementor */
+    --e-global-typography-primary-font-family:   'Inter', sans-serif;
+    --e-global-typography-secondary-font-family: 'Inter', sans-serif;
+    --e-global-typography-text-font-family:      'Inter', sans-serif;
+    --e-global-typography-accent-font-family:    'Inter', sans-serif;
+}
+
+/* 3. Herança de fonte — Tailwind !important sobrescreve onde necessário (ex: font-serif) */
+#gdb-root * { font-family: inherit; }
+
+/* 4. Reset de elementos comuns sobrescritos por temas WordPress/Elementor */
+#gdb-root h1, #gdb-root h2, #gdb-root h3,
+#gdb-root h4, #gdb-root h5, #gdb-root h6 {
+    margin: 0; padding: 0;
+    color: inherit; font-size: inherit;
+    font-weight: inherit; line-height: inherit;
+}
+#gdb-root p   { margin: 0; color: inherit; }
+#gdb-root ul, #gdb-root ol { margin: 0; padding: 0; list-style: none; }
+#gdb-root li  { margin: 0; }
+
+/* Links — estados padrão, hover e focus */
+#gdb-root a                        { color: inherit; text-decoration: none; }
+#gdb-root a:hover, #gdb-root a:focus { color: inherit; text-decoration: none; outline: none; }
+
+/* Botões — border-width:0 default; border-style:solid preserva bordas do Tailwind;
+   Tailwind's .border { border-width:1px !important } sobrescreve border-width:0 quando necessário */
+#gdb-root button                          { font-family: inherit; color: inherit; border-style: solid; border-width: 0; }
+#gdb-root button:hover, #gdb-root button:focus { color: inherit; outline: none; }
+
+/* Inputs */
+#gdb-root input, #gdb-root textarea, #gdb-root select {
+    font-family: inherit; color: inherit;
+}
+#gdb-root input:focus, #gdb-root textarea:focus,
+#gdb-root select:focus { outline: none; }
+
+/* 5. Mídia — dimensões protegidas com especificidade elevada (id + classe > .elementor img) */
+#gdb-root img, #gdb-root video {
+    display: block !important;
+    max-width: none !important;  /* evita que o tema force max-width globalmente */
+}
+/* Classes Tailwind de tamanho em imagens com especificidade (1-1-0) para bater Elementor */
+#gdb-root img.w-full   { width: 100% !important; }
+#gdb-root img.w-auto   { width: auto !important; }
+#gdb-root img.h-full   { height: 100% !important; }
+#gdb-root img.h-auto   { height: auto !important; }
+#gdb-root img.object-cover    { object-fit: cover !important; }
+#gdb-root img.object-contain  { object-fit: contain !important; }
+/* Vídeo de fundo */
+#gdb-root video.w-full { width: 100% !important; }
+#gdb-root video.h-full { height: 100% !important; }
+#gdb-root video.object-cover  { object-fit: cover !important; }
+
+#gdb-root .noise-overlay {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important;
+    pointer-events: none !important;
+    z-index: 50 !important;
+    background-color: transparent !important;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E") !important;
+    opacity: 0.06 !important;
+}
+html.dark #gdb-root .noise-overlay,
+#gdb-root.dark  .noise-overlay { opacity: 0.04 !important; }
+
+#gdb-root .dash-anim {
+    stroke-dasharray: 8 8 !important;
+    animation: dash 10s linear infinite !important;
+}
+@keyframes dash { to { stroke-dashoffset: -200; } }
+
+#gdb-root .polaroid-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease !important;
+}
+#gdb-root .polaroid-card:hover {
+    transform: scale(1.15) rotate(0deg) translateY(-15px) !important;
+    z-index: 50 !important;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6) !important;
+}
+
+#gdb-root .no-scrollbar::-webkit-scrollbar { display: none !important; }
+#gdb-root .no-scrollbar { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+
+/* ── Acordeão de Edições ─────────────────────────────────────── */
+#gdb-root .accordion-content {
+    display: grid !important;
+    grid-template-rows: 0fr !important;
+    transition: grid-template-rows 0.7s cubic-bezier(0.4,0,0.2,1) !important;
+}
+#gdb-root .accordion-item.is-open .accordion-content { grid-template-rows: 1fr !important; }
+#gdb-root .accordion-inner { min-height: 0 !important; }
+
+#gdb-root .header-small {
+    transition: max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease, padding 0.6s cubic-bezier(0.4,0,0.2,1) !important;
+    max-height: 150px !important; opacity: 1 !important; overflow: hidden !important;
+    background: transparent !important;
+}
+#gdb-root .header-small:hover,
+#gdb-root .header-small:focus,
+#gdb-root .header-small:focus-visible {
+    background: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+#gdb-root .accordion-item.is-open .header-small {
+    max-height: 0 !important; opacity: 0 !important;
+    padding-top: 0 !important; padding-bottom: 0 !important;
+    margin: 0 !important; pointer-events: none !important;
+}
+#gdb-root .header-large {
+    opacity: 0 !important;
+    transform: translateY(20px) scale(0.98) !important;
+    transition: all 0.7s cubic-bezier(0.4,0,0.2,1) !important;
+    transform-origin: left center !important;
+}
+#gdb-root .accordion-item.is-open .header-large {
+    opacity: 1 !important; transform: translateY(0) scale(1) !important;
+    transition-delay: 0.15s !important;
+}
+#gdb-root .acc-fade {
+    opacity: 0 !important; transform: translateY(15px) !important;
+    transition: all 0.7s cubic-bezier(0.4,0,0.2,1) !important;
+}
+#gdb-root .accordion-item.is-open .acc-fade {
+    opacity: 1 !important; transform: translateY(0) !important;
+    transition-delay: 0.25s !important;
+}
+#gdb-root .acc-icon { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1) !important; }
+#gdb-root .accordion-item.is-open .acc-icon { transform: rotate(180deg) !important; }
+
+/* Overflow de imagens escaladas — isolation força stacking context correto */
+#gdb-root .accordion-item > div.overflow-hidden {
+    overflow: hidden !important;
+    isolation: isolate !important;
+}
+
+/* Trava todos os estilos visuais dos cards no hover — bloqueia qualquer injeção do Elementor/tema */
+#gdb-root .accordion-item {
+    background-color: var(--acc-bg) !important;
+}
+#gdb-root .accordion-item:hover {
+    background-color: var(--acc-bg) !important;
+    border-color: rgba(63, 63, 70, 0.5) !important;
+    outline: none !important;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+}
+
+/* ── Intersection Observer ───────────────────────────────────── */
+#gdb-root .reveal {
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1) !important;
+    will-change: opacity, transform;
+}
+#gdb-root.js-loaded .reveal              { opacity: 0 !important; transform: translateY(40px) !important; }
+#gdb-root.js-loaded .reveal.active        { opacity: 1 !important; transform: translateY(0) !important; }
+#gdb-root.js-loaded .reveal-left          { transform: translateX(-40px) !important; }
+#gdb-root.js-loaded .reveal-right         { transform: translateX(40px)  !important; }
+#gdb-root.js-loaded .reveal-scale         { transform: scale(0.9) translateY(20px) !important; }
+#gdb-root.js-loaded .reveal-left.active,
+#gdb-root.js-loaded .reveal-right.active,
+#gdb-root.js-loaded .reveal-scale.active  { transform: none !important; }
+
+#gdb-root .delay-100  { transition-delay: 100ms  !important; }
+#gdb-root .delay-200  { transition-delay: 200ms  !important; }
+#gdb-root .delay-300  { transition-delay: 300ms  !important; }
+#gdb-root .delay-400  { transition-delay: 400ms  !important; }
+#gdb-root .delay-500  { transition-delay: 500ms  !important; }
+#gdb-root .delay-1000 { transition-delay: 1000ms !important; }
+#gdb-root .delay-1200 { transition-delay: 1200ms !important; }
+#gdb-root .delay-1500 { transition-delay: 1500ms !important; }
+#gdb-root .delay-1800 { transition-delay: 1800ms !important; }
+#gdb-root .delay-2000 { transition-delay: 2000ms !important; }
+
+@media (prefers-reduced-motion: reduce) {
+    #gdb-root.js-loaded .reveal, #gdb-root .reveal, #gdb-root .animate-pop-in {
+        transition: none !important; animation: none !important;
+        opacity: 1 !important; transform: none !important;
+    }
+}
+
+/* ── FAQ ─────────────────────────────────────────────────────── */
+#gdb-root .faq-item {
+    border: 1px solid rgba(63,63,70,0.7) !important;
+    border-radius: 1rem !important;
+    background-color: rgba(24,24,27,0.6) !important;
+    transition: border-color 0.35s ease, background-color 0.35s ease !important;
+}
+#gdb-root .faq-item.faq-open {
+    border-color: rgba(220,38,38,0.4) !important;
+    background-color: rgba(24,24,27,1) !important;
+}
+#gdb-root .faq-btn {
+    width: 100% !important; display: flex !important;
+    align-items: center !important; justify-content: space-between !important;
+    gap: 1.5rem !important; padding: 1.25rem 1.5rem !important;
+    text-align: left !important; cursor: pointer !important;
+    background: transparent !important;
+    border: none !important; border-width: 0 !important;
+    outline: none !important; box-shadow: none !important;
+    white-space: normal !important;
+}
+#gdb-root .faq-btn:hover, #gdb-root .faq-btn:focus {
+    background: transparent !important; outline: none !important; box-shadow: none !important;
+}
+/* Seletor com especificidade (1-2-0) para bater qualquer regra de span/button do tema */
+#gdb-root .faq-btn .faq-question {
+    font-weight: 600 !important; font-size: 0.9375rem !important;
+    line-height: 1.55 !important; color: #d4d4d8 !important;
+    transition: color 0.3s ease !important;
+    display: block !important;
+    min-width: 0 !important;
+    flex: 1 1 0% !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+}
+#gdb-root .faq-item.faq-open .faq-btn .faq-question { color: #ffffff !important; }
+#gdb-root .faq-chevron {
+    width: 1.1rem !important; height: 1.1rem !important;
+    color: #ef4444 !important; flex-shrink: 0 !important;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1) !important;
+}
+#gdb-root .faq-item.faq-open .faq-chevron { transform: rotate(180deg) !important; }
+#gdb-root .faq-body {
+    display: grid !important;
+    grid-template-rows: 0fr !important;
+    transition: grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1) !important;
+}
+#gdb-root .faq-item.faq-open .faq-body { grid-template-rows: 1fr !important; }
+#gdb-root .faq-inner { min-height: 0 !important; overflow: hidden !important; }
+#gdb-root .faq-answer {
+    padding: 0.875rem 1.5rem 1.5rem !important;
+    color: #a1a1aa !important; font-size: 0.875rem !important;
+    line-height: 1.8 !important;
+    border-top: 1px solid rgba(63,63,70,0.4) !important;
+    background: transparent !important;
+}
+
+/* Photo strip — expand on hover (desktop only) */
+@media (min-width: 1024px) {
+    #gdb-root .photo-strip {
+        display: flex !important;
+        gap: 12px !important;
+    }
+    #gdb-root .photo-strip-item {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        transition: flex-grow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #gdb-root .photo-strip-item:hover {
+        flex-grow: 2 !important;
+    }
+}
+
+/* Vídeo da edição (YouTube) — 16:9 via padding para resistir aos estilos de iframe do Elementor */
+#gdb-root .edicao-video {
+    position: relative !important;
+    width: 100% !important;
+    height: 0 !important;
+    padding-bottom: 56.25% !important;
+    margin-top: 12px !important;
+    border-radius: 1rem !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: #000 !important;
+}
+#gdb-root .edicao-video iframe {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    border: 0 !important;
+    margin: 0 !important;
+}
+
+/* ── FAIXA DE CONTENÇÃO & BLUR ANIMADO ───────────────────────── */
+#gdb-root .containment-tape-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150vw; /* Cruza a tela inteira */
+    z-index: 50;
+    pointer-events: none;
+    /* Máscara de opacidade nas bordas para não atrapalhar o menu */
+    -webkit-mask-image: linear-gradient(to right, transparent 2%, black 15%, black 85%, transparent 98%);
+    mask-image: linear-gradient(to right, transparent 2%, black 15%, black 85%, transparent 98%);
+}
+#gdb-root.js-loaded .containment-tape-wrapper {
+    opacity: 0 !important;
+    transform: translate(-50%, -50%) rotate(-4deg) scale(1.3) !important;
+    transition: opacity 0.4s ease 0.8s, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s !important;
+}
+#gdb-root.js-loaded .containment-tape-wrapper.active {
+    opacity: 1 !important;
+    transform: translate(-50%, -50%) rotate(-4deg) scale(1) !important;
+}
+
+#gdb-root .containment-tape {
+    display: flex;
+    width: max-content;
+    background-color: rgba(220, 38, 38, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    padding: 0.5rem 0; /* Faixa estreita */
+    box-shadow: 0 4px 30px rgba(220, 38, 38, 0.4);
+    animation: tapeScroll 20s linear infinite;
+}
+@keyframes tapeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+#gdb-root .containment-text {
+    font-size: 1.125rem;
+    font-weight: 900;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    padding: 0 1.5rem;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Classes para o grid dos cards com as vendas encerradas */
+#gdb-root .locked-grid {
+    filter: blur(6px) grayscale(100%);
+    opacity: 0.4;
+}
+#gdb-root.js-loaded .locked-grid {
+    transform: none !important;
+    filter: blur(0px) grayscale(0%);
+    opacity: 1 !important;
+    /* Dá tempo para os cards surgirem bonitos (delay ~800ms) antes do impacto visual do bloqueio */
+    transition: filter 1s ease 0.8s, opacity 1s ease 0.8s !important; 
+}
+#gdb-root.js-loaded .locked-grid.active {
+    filter: blur(6px) grayscale(100%);
+    opacity: 0.4 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TELA DE CARREGAMENTO
+   ══════════════════════════════════════════════════════════════ */
+html:has(#gdb-loader:not(.gld-hidden)) { overflow: hidden !important; }
+
+#gdb-loader {
+    position: fixed !important; inset: 0 !important; z-index: 99999 !important;
+    background: #09090b !important;
+    display: flex !important; flex-direction: column !important;
+    align-items: center !important; justify-content: center !important;
+    gap: 2rem !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: opacity 0.85s cubic-bezier(0.4,0,0.2,1),
+                visibility 0.85s ease !important;
+}
+#gdb-loader.gld-hidden {
+    opacity: 0 !important; visibility: hidden !important; pointer-events: none !important;
+}
+#gdb-loader .gld-glow {
+    position: absolute !important; top: 50% !important; left: 50% !important;
+    transform: translate(-50%, -55%) !important;
+    width: 480px !important; height: 480px !important; border-radius: 50% !important;
+    background: radial-gradient(circle, rgba(220,38,38,0.18) 0%, rgba(220,38,38,0.06) 40%, transparent 70%) !important;
+    pointer-events: none !important;
+    animation: gldPulse 2.8s ease-in-out infinite !important;
+}
+#gdb-loader .gld-logo-wrap {
+    position: relative !important; z-index: 1 !important;
+    animation: gldLogoFloat 3.5s ease-in-out infinite !important;
+}
+#gdb-loader .gld-logo-wrap img {
+    display: block !important;
+    width: 180px !important; height: auto !important;
+    filter: drop-shadow(0 0 24px rgba(220,38,38,0.45)) drop-shadow(0 0 6px rgba(220,38,38,0.25)) !important;
+}
+
+#gdb-loader .gld-brand { text-align: center !important; }
+#gdb-loader .gld-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.375rem !important; font-weight: 700 !important;
+    color: #ffffff !important; letter-spacing: 0.15em !important; margin: 0 !important;
+}
+#gdb-loader .gld-city {
+    display: block !important; font-size: 0.625rem !important; font-weight: 600 !important;
+    letter-spacing: 0.35em !important; color: #dc2626 !important; margin: 0.4rem 0 0 !important;
+}
+#gdb-loader .gld-dots { display: flex !important; gap: 0.5rem !important; align-items: center !important; }
+#gdb-loader .gld-dots span {
+    display: block !important; width: 5px !important; height: 5px !important;
+    border-radius: 50% !important; background: #3f3f46 !important;
+    animation: gldDot 1.4s ease-in-out infinite !important;
+}
+#gdb-loader .gld-dots span:nth-child(2) { animation-delay: 0.2s !important; }
+#gdb-loader .gld-dots span:nth-child(3) { animation-delay: 0.4s !important; }
+
+@keyframes gldPulse {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -55%) scale(1);    }
+    50%       { opacity: 1;   transform: translate(-50%, -55%) scale(1.15); }
+}
+@keyframes gldLogoFloat {
+    0%, 100% { transform: translateY(0);    }
+    50%       { transform: translateY(-8px); }
+}
+@keyframes gldDot {
+    0%, 70%, 100% { background: #3f3f46; transform: translateY(0);    }
+    35%            { background: #dc2626; transform: translateY(-5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #gdb-loader .gld-logo-wrap,
+    #gdb-loader .gld-glow, #gdb-loader .gld-dots span { animation: none !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DESEMPENHO
+   ══════════════════════════════════════════════════════════════ */
+
+/* Seções fora da tela (IntersectionObserver no script.js): pausa animações infinitas
+   — faixa tapeScroll com backdrop-blur, rota tracejada, ping, pulses e spinner. */
+#gdb-root .anim-paused .containment-tape,
+#gdb-root .anim-paused .dash-anim,
+#gdb-root .anim-paused .animate-ping,
+#gdb-root .anim-paused .animate-pulse,
+#gdb-root .anim-paused .animate-spin {
+    animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #gdb-root .containment-tape,
+    #gdb-root .dash-anim,
+    #gdb-root .animate-ping,
+    #gdb-root .animate-pulse { animation: none !important; }
+}
+
+/* Facade do YouTube: thumbnail + play; o iframe só é criado no clique */
+#gdb-root .yt-facade {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #000 !important;
+    cursor: pointer !important;
+    display: block !important;
+}
+#gdb-root .yt-facade img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+#gdb-root .yt-facade-play {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 68px !important;
+    height: 48px !important;
+    transform: translate(-50%, -50%) !important;
+    opacity: 0.85 !important;
+    transition: opacity 0.2s ease !important;
+}
+#gdb-root .yt-facade-play svg { width: 100% !important; height: 100% !important; display: block !important; }
+#gdb-root .yt-facade:hover .yt-facade-play,
+#gdb-root .yt-facade:focus-visible .yt-facade-play { opacity: 1 !important; }
+#gdb-root .yt-facade:focus-visible { outline: 3px solid #fff !important; outline-offset: -3px !important; }

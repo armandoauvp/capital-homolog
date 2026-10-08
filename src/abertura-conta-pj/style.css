@@ -1,0 +1,319 @@
+/* Topo com foto de prédios, sobreposição preta e o título da página */
+.conta-hero {
+  position: relative;
+  padding: 236px var(--gutter) 116px;
+  background: var(--black) url("/wp-content/uploads/2025/08/arranha-ceus-modernos-comuns-negocio-arranha-ceus-arquitetura-que-levanta-ao-ceu-conceitos-scaled-1.jpg") center / cover no-repeat;
+}
+.conta-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .68); }
+.conta-hero__content { position: relative; max-width: var(--container); margin-inline: auto; text-align: center; }
+.conta-hero h1 { margin: 0; font: 600 54px/1.2 var(--font-head); color: var(--white); }
+
+@media (max-width: 1024px) {
+  .conta-hero { padding-top: 200px; }
+  .conta-hero h1 { font-size: 48px; }
+}
+@media (max-width: 767px) {
+  .conta-hero { padding: 136px var(--gutter) 72px; }
+  .conta-hero::before { background: rgba(0, 0, 0, .81); }
+  .conta-hero h1 { font-size: 26px; }
+}
+
+/* ===== Formulário em etapas (CSS do widget original; removidas as regras de hero/rodapé que não eram usadas) ===== */
+#app {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-body);
+}
+/* O tema do WordPress fazia os controles herdarem a fonte da página (os .btn usam a fonte do design system) */
+#app button:not(.btn), #app input, #app textarea { font-family: inherit; }
+#app h2 { margin: 0; }
+
+.form-section { padding: 4rem 0; }
+.form-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.form-content { display: flex; flex-direction: column; gap: 2rem; }
+
+/* Cartões das seções */
+.form-section-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 2rem;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-title);
+}
+.section-icon {
+  font-size: 1.2rem;
+  background: var(--color-title);
+  color: var(--white);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(11, 41, 4, 0.2);
+  opacity: 0.9;
+}
+.section-header h2 { font-size: 1.5rem; font-weight: 600; color: var(--color-body); }
+.section-description { color: var(--gray-500); margin-bottom: 1.5rem; font-style: italic; }
+
+/* Grade do formulário */
+.form-grid { display: grid; gap: 1.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label { font-weight: 500; color: var(--gray-700); font-size: 0.875rem; }
+.field-description { font-size: 0.75rem; color: var(--gray-500); font-style: italic; margin-top: -0.25rem; }
+
+/* Campos */
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  font-family: var(--font-body);
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-title);
+  box-shadow: 0 0 0 3px rgba(11, 41, 4, 0.1);
+}
+.form-group input:disabled { background-color: var(--gray-100); cursor: not-allowed; }
+.form-group textarea { min-height: 100px; resize: vertical; }
+
+/* Rádios e checkboxes */
+.radio-group,
+.checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; }
+.radio-option,
+.checkbox-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color var(--duration) var(--ease);
+}
+.radio-option:hover,
+.checkbox-option:hover { background-color: var(--gray-100); }
+.radio-option input,
+.checkbox-option input { margin: 0; width: auto; flex-shrink: 0; margin-top: 0.125rem; }
+.radio-option span,
+.checkbox-option span { font-size: 0.875rem; line-height: 1.4; }
+
+/* Campos condicionais */
+.conditional-field {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f0f8f0;
+  border-radius: 6px;
+  border-left: 4px solid var(--color-title);
+}
+.conditional-field label { color: var(--color-title); font-weight: 500; }
+.conditional-field input { width: auto; max-width: 100%; }
+
+/* Upload de arquivos */
+.file-upload {
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--surface-soft);
+  transition: border-color var(--duration) var(--ease);
+}
+.file-upload:hover { border-color: var(--color-title); }
+.file-upload input[type="file"] { display: none; }
+.file-upload-text p { margin: 0.25rem 0; color: var(--gray-500); font-size: 0.875rem; }
+/* Seletor de arquivo: controle de interface (não é CTA), forma própria com as cores do design system */
+.upload-btn {
+  background: var(--gradient-primary);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  transition: background var(--duration) var(--ease), transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  box-shadow: 0 2px 4px rgba(11, 41, 4, 0.2);
+}
+.upload-btn:hover,
+.upload-btn.has-file { background: var(--color-title); }
+.upload-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 8px rgba(11, 41, 4, 0.3); }
+.upload-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* Envio */
+.submit-section { text-align: center; margin-top: 2rem; }
+.error-message {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.error-message h4 { font-weight: 600; margin-bottom: 0.5rem; }
+.error-message ul { list-style-type: disc; margin-left: 1.5rem; }
+.error-message li { margin: 0.25rem 0; }
+.success-message {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+/* Enviar: .btn .btn--primary (base.css); aqui só a largura mínima */
+.submit-btn { min-width: 200px; }
+
+.loading { opacity: 0.7; pointer-events: none; }
+
+/* Etapas */
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.stepper-item {
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid transparent;
+  background: var(--gray-100);
+  color: var(--color-body);
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: unset;
+  box-shadow: none;
+  box-sizing: border-box;
+  transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease),
+    color var(--duration) var(--ease), transform var(--duration) var(--ease);
+}
+#app .stepper-item span { transition: inherit; }
+#app .stepper-item:hover,
+#app .stepper-item:focus-visible,
+#app .stepper-item:active {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+  color: var(--color-body);
+}
+#app .stepper-item.active { transform: translateY(-1px); }
+.stepper-item span { flex-shrink: 0; }
+.stepper-item .step-label { flex-shrink: 1; min-width: 0; white-space: normal; text-align: left; line-height: 1.2; font-size: 0.85rem; }
+.stepper-item .step-number {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e5e7eb;
+  color: var(--color-body);
+  font-size: 0.85rem;
+}
+.stepper-item.active {
+  border-color: var(--color-title);
+  background: var(--color-title);
+  color: var(--white);
+}
+.stepper-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.stepper-item.completed { border-color: var(--green-700); background: #f0fdf4; color: var(--green-900); }
+
+.form-steps { display: flex; flex-direction: column; gap: 1.5rem; }
+.form-step { display: none; animation: pj-step-in var(--duration) var(--ease); }
+.form-step.active { display: block; }
+@keyframes pj-step-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Voltar (.btn--outline-dark) e Próximo (.btn--primary) vêm do base.css; aqui só a largura mínima */
+.step-actions { display: flex; justify-content: space-between; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; }
+.nav-btn { min-width: 160px; }
+
+/* Resumo da revisão */
+.review-summary { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.review-summary li {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  background: var(--surface-soft);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+.review-summary li span { color: var(--gray-700); text-align: right; }
+.review-summary strong { color: var(--color-body); font-weight: 600; }
+
+/* Destaque do campo com erro */
+.field-error { color: #dc2626 !important; }
+.field-error::after { content: " ←"; color: #dc2626; font-weight: bold; }
+
+@media (max-width: 768px) {
+  .form-container { padding: 0 1rem; }
+  .form-section-card { padding: 1.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .section-icon { width: 2.5rem; height: 2.5rem; font-size: 1.5rem; }
+}
+@media (max-width: 767px) {
+  .form-section { padding: 2rem 0 3rem; }
+  .form-content { gap: 1.25rem; }
+  .form-section-card { margin-bottom: 1.25rem; }
+  /* 16px evita o zoom automático do iOS ao tocar no campo. */
+  .form-group input, .form-group textarea { font-size: 16px; }
+  .conditional-field input { width: 100%; }
+  .file-upload { padding: 1.25rem; }
+  /* Revisão: valores longos (razão social, e-mail) vão para a linha de baixo. */
+  .review-summary li { flex-direction: column; gap: 0.25rem; }
+  .review-summary li span { text-align: left; overflow-wrap: anywhere; }
+}
+
+/* Tablet: número sobre o nome, para os 5 nomes caberem lado a lado. */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .stepper { grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
+  .stepper-item { flex-direction: column; justify-content: center; gap: 0.4rem; padding: 0.75rem 0.5rem; border-radius: 16px; }
+  .stepper-item .step-label { text-align: center; font-size: 0.8rem; }
+}
+
+/* Celular: etapas viram uma linha de círculos ligados por um traço; o nome da etapa
+   continua no título do card e fica disponível para leitores de tela. */
+@media (max-width: 640px) {
+  .stepper { position: relative; display: flex; justify-content: space-between; gap: 0; margin-bottom: 1.25rem; }
+  .stepper::before { content: ""; position: absolute; left: 1.25rem; right: 1.25rem; top: 50%; height: 2px; background: var(--border); }
+  .stepper-item, #app .stepper-item:hover, #app .stepper-item:focus-visible, #app .stepper-item:active,
+  .stepper-item.active, .stepper-item.completed {
+    position: relative; padding: 0; background: transparent; border-color: transparent; transform: none;
+  }
+  .stepper-item .step-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .stepper-item .step-number { width: 2.5rem; height: 2.5rem; font-size: 1rem; border: 2px solid var(--white); }
+  .stepper-item.active .step-number { background: var(--color-title); color: var(--white); box-shadow: 0 0 0 2px var(--color-title); }
+  .stepper-item.completed .step-number { background: var(--green-700); color: var(--white); }
+  /* Voltar e Próximo lado a lado, dividindo a largura. */
+  .step-actions { flex-wrap: nowrap; }
+  .nav-btn { flex: 1; min-width: 0; }
+  .submit-btn { width: 100%; min-width: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-step { animation: none; }
+  #app .stepper-item.active, .upload-btn:hover { transform: none; }
+}
+@media (max-width: 480px) {
+  .form-section-card { padding: 1.25rem 1rem; }
+}

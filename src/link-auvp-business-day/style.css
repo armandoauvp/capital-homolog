@@ -1,0 +1,31 @@
+/* Links AUVP Business Day */
+.bd-hero {
+  position: relative;
+  padding: 220px var(--gutter);
+  background: var(--black) url("/wp-content/uploads/2025/08/CAPA-4-scaled-2.webp") center / cover no-repeat;
+}
+.bd-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .38); }
+.bd-hero__inner { position: relative; max-width: 1200px; margin-inline: auto; display: flex; flex-direction: column; align-items: flex-start; }
+.bd-hero__logo { width: 301px; margin-bottom: 20px; }
+.bd-hero__title { font: 600 35px/1.2 var(--font-head); color: var(--white); margin: 0 0 20px; max-width: 41.27%; }
+.bd-hero__text { font: 300 20px/1.2 var(--font-head); color: var(--white); margin: 0; max-width: 41.27%; }
+.bd-hero__links { display: flex; flex-direction: column; gap: 34px; margin-top: 52px; }
+
+@media (max-width: 1024px) {
+  .bd-hero { padding-block: 160px; }
+  .bd-hero__inner { max-width: 720px; }
+  .bd-hero__title, .bd-hero__text { max-width: 100%; }
+  .bd-hero__title { font-size: 48px; }
+}
+
+/* No celular o original troca o bloco por outro com fundo vertical de linhas */
+@media (max-width: 767px) {
+  .bd-hero { padding: 16px 24px 200px; background-image: url("/wp-content/uploads/2025/08/linhas.webp"); background-position: center left; }
+  .bd-hero::before { background: rgba(0, 0, 0, .88); }
+  .bd-hero__inner { align-items: center; text-align: center; padding-bottom: 72px; }
+  .bd-hero__logo { width: 166px; margin: 0; }
+  .bd-hero__title { font-size: 30px; max-width: 289px; margin: 42px 0 12px; }
+  .bd-hero__text { font-size: 19px; max-width: 289px; }
+  /* .btn--lg é 100% no mobile: a coluna define a largura do original (280px) */
+  .bd-hero__links { gap: 20px; margin-top: 36px; align-items: center; width: 100%; max-width: 280px; }
+}

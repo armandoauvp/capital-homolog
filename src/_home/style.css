@@ -1,0 +1,177 @@
+/* Home (/) — servida por src/index.html. Botões, títulos, FAQ, slideshow e marquee vêm do base.css. */
+
+/* Hero */
+.home-hero {
+  position: relative; overflow: hidden; background: var(--black);
+  padding: 236px var(--gutter) 120px; text-align: center; color: var(--white);
+}
+/* Película escura sobre o slideshow */
+.home-hero__bg::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .68); }
+.home-hero__content { position: relative; max-width: 1200px; margin-inline: auto; }
+.home-hero h1 { font: 600 54px/1.15 var(--font-head); color: var(--white); margin: 0 auto; max-width: 1100px; }
+.home-hero__ranking { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 32px 0; }
+.home-hero__ranking h2 { margin: 0; font: 300 24px/36px var(--font-head); }
+.home-hero__ranking h2 a { color: var(--white); text-decoration: none; }
+.home-hero__btg { display: block; width: 120px; }
+.home-hero__btg img { width: 100%; }
+
+/* O lucro de nossos clientes */
+.home-lucro { background: var(--white); padding: 60px var(--gutter); }
+.home-lucro__inner { max-width: 1200px; margin-inline: auto; display: flex; }
+.home-lucro__col { width: 50%; padding: 10px; }
+.home-lucro__col:last-child { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.home-lucro h2 { font: 600 46px/1.2 var(--font-head); color: var(--color-title); margin: 0; }
+.home-lucro__text { font: 400 24px/1.5 var(--font-body); color: var(--color-text); }
+.home-lucro__text p { margin: 0 0 14px; }
+.home-lucro .btn { margin-top: 8px; }
+
+/* Banners com foto de fundo (cartão e offshore) */
+.home-banner { position: relative; overflow: hidden; background: #030303 center / cover no-repeat; padding: 300px 90px 60px; color: var(--white); }
+.home-banner::before { content: ""; position: absolute; inset: 0; background: #030303; opacity: .6; }
+.home-banner--cartao { background-image: url("/wp-content/uploads/2025/03/CARTo.jpg"); }
+.home-banner--offshore { background-image: url("/wp-content/uploads/2025/03/photo-1476514525535-07fb3b4ae5f1.avif"); padding-bottom: 90px; }
+.home-banner--offshore::before { background: var(--black); opacity: .8; }
+.home-banner__inner { position: relative; max-width: 1200px; margin-inline: auto; display: flex; flex-direction: column; align-items: flex-start; }
+.home-banner__title { margin: 0; }
+.home-banner__title--gold { color: var(--gold); }
+.home-banner__sub { font: 300 24px/36px var(--font-head); color: var(--white); margin: 0; }
+.home-banner--cartao .btn { margin-top: 30px; }
+.home-banner--offshore .home-banner__sub { margin-top: 12px; }
+.home-banner--offshore .btn { margin-top: 40px; }
+
+/* Benefícios */
+.home-beneficios { padding: 60px 0; }
+.home-beneficios .ds-title { margin: 0; padding: 15px 0 75px; }
+.home-beneficios__grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: minmax(215px, auto); }
+.home-beneficio { display: flex; gap: 32px; align-items: flex-start; padding-right: 24px; }
+.home-beneficio__num { font: 800 104px/1 var(--font-head); color: #5d625c; margin-top: -12px; letter-spacing: -.02em; }
+.home-beneficio > div { flex: 0 1 71%; }
+.home-beneficio h3 { font: 700 28px/31px var(--font-head); color: var(--color-body); margin: 0 0 14px; }
+.home-beneficio p { font: 400 24px/28px var(--font-body); color: var(--color-body); margin: 0; }
+
+/* Vídeo */
+.home-video { background: var(--black); color: var(--gray-100); padding: 60px 0; text-align: center; }
+.home-video .ds-title { margin: 0; padding-block: 15px; }
+.home-video p { font: 400 24px/1.5 var(--font-body); margin: 0; }
+.home-video__player { margin-top: 50px; border-radius: 11px; overflow: hidden; }
+
+/* Plataforma própria */
+.home-plataforma { padding: 60px 0; text-align: center; }
+.home-plataforma__title { font: 600 46px/48px var(--font-head); color: var(--color-title); margin: 0; }
+.home-plataforma__text { font: 400 24px/1.5 var(--font-body); color: var(--color-text); margin: 20px 0 40px; }
+.home-plataforma__chips { list-style: none; margin: 0 auto; padding: 0; max-width: 880px; display: grid; grid-template-columns: repeat(3, 280px); justify-content: center; gap: 20px; }
+.home-plataforma__chips li {
+  display: flex; align-items: center; justify-content: center; min-height: 64px; padding: 0 24px;
+  background: #e7e7e7; border-radius: 6px; font: 600 18px/20px "Roboto", sans-serif; color: var(--color-text);
+}
+.home-plataforma .btn { margin-top: 64px; }
+
+/* Depoimentos */
+.home-depoimentos { padding: 60px 0; }
+.home-depoimentos .ds-title { margin: 0 0 46px; padding-top: 6px; }
+.home-depoimentos__carousel { max-width: 1100px; margin-inline: auto; }
+.home-depoimentos__track { display: grid; }
+.home-depoimento { grid-area: 1 / 1; margin: 0; text-align: center; opacity: 0; visibility: hidden; transition: opacity .5s var(--ease), visibility .5s var(--ease); }
+.home-depoimento.is-active { opacity: 1; visibility: visible; }
+.home-depoimento blockquote {
+  position: relative; margin: 0 0 32px; padding: 60px;
+  background: #f9fafa; font: italic 400 24px/1.5 var(--font-body); color: var(--color-text);
+}
+/* setinha do balão */
+.home-depoimento blockquote::after {
+  content: ""; position: absolute; left: 50%; bottom: -8px; width: 16px; height: 16px;
+  background: #f9fafa; transform: translateX(-50%) rotate(45deg);
+}
+.home-depoimento figcaption { display: flex; flex-direction: column; align-items: center; }
+.home-depoimento img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
+.home-depoimento cite { margin-top: 16px; font: normal 600 20px/1.3 var(--font-head); color: var(--color-text); }
+.home-depoimentos__dots { display: flex; justify-content: center; gap: 4px; margin-top: 56px; }
+.home-depoimentos__dots button { width: 18px; height: 18px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
+.home-depoimentos__dots button::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--black); opacity: .2; transition: opacity var(--duration) var(--ease); }
+.home-depoimentos__dots button[aria-selected="true"]::after { opacity: 1; }
+
+/* AUVP na Mídia (animação no .ds-marquee) */
+.home-midia { background: var(--gray-100); padding: 60px 0; }
+.home-midia .ds-title { margin: 0; padding-block: 6px; }
+.home-midia__marquee { width: 93%; margin: 24px auto; --marquee-gap: 50px; --marquee-duration: 24s; }
+.home-midia__track { list-style: none; margin: 0; padding: 0; }
+.home-midia__track li { width: 144px; flex: none; }
+.home-midia__track a { display: block; height: 100px; }
+.home-midia__track img { width: 100%; height: 100%; object-fit: contain; }
+
+/* FAQ (componente .faq) */
+.home-faq { padding: 60px 0; }
+.home-faq .ds-title { padding-top: 6px; }
+
+/* Atendemos em qualquer instituição */
+.home-instituicoes { padding: 30px 0 120px; }
+.home-instituicoes .ds-title { margin: 0; padding-block: 6px; }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .home-hero h1 { font-size: 48px; }
+  .home-lucro__inner { max-width: 720px; }
+  .home-lucro h2 { font-size: 45px; }
+  .home-banner { padding: 60px; }
+  .home-banner--cartao, .home-banner--offshore { background-position: bottom center; }
+  .home-banner__inner { max-width: 720px; }
+  .home-banner__title { max-width: 372px; }
+  .home-beneficio__num { font-size: 90px; }
+  .home-plataforma__title { font-size: 45px; }
+  .home-plataforma__chips { grid-template-columns: repeat(3, 1fr); }
+  .home-depoimento blockquote { padding: 18px; }
+  .home-midia__marquee { width: 100%; }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .home-hero { padding: 140px var(--gutter) 72px; }
+  .home-hero__bg::after { background: rgba(0, 0, 0, .81); }
+  .home-hero h1 { font-size: 26px; }
+  .home-hero__ranking { flex-direction: column; margin: 4px 0 16px; }
+  .home-hero__ranking h2 { font-size: 20px; line-height: 1.5; }
+  .home-hero__btg { width: 35%; }
+
+  .home-lucro { padding: 60px var(--gutter); }
+  .home-lucro__inner { flex-direction: column; }
+  .home-lucro__col { width: 100%; padding: 0; }
+  .home-lucro__col:first-child { padding-bottom: 40px; }
+  .home-lucro h2 { font-size: 28px; }
+  .home-lucro__text { font-size: 20px; }
+
+  .home-banner { padding: 80px var(--gutter); }
+  .home-banner__sub { font-size: 20px; line-height: 1.3; padding: 16px 0 40px; }
+  .home-banner--offshore .home-banner__sub { margin-top: 0; padding: 0 0 15px; }
+  .home-banner .btn { margin-top: 0; }
+
+  .home-beneficios .ds-title { padding: 0; margin-bottom: 20px; }
+  .home-beneficios__grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .home-beneficio { flex-direction: column; gap: 0; padding: 0; margin-bottom: 35px; }
+  .home-beneficio__num { font-size: 55px; margin-top: 0; }
+  .home-beneficio > div { flex-basis: auto; }
+  .home-beneficio h3 { font-size: 24px; line-height: 1.3; }
+  .home-beneficio p { font-size: 20px; line-height: 1.3; }
+
+  .home-video .ds-title { padding-block: 0; }
+  .home-video p { font-size: 20px; line-height: 1.3; margin: 24px 16px 16px; }
+  .home-video__player { margin-top: 15px; }
+
+  .home-plataforma { text-align: left; }
+  .home-plataforma__title { font-size: 28px; line-height: 1.2; }
+  .home-plataforma__text { font-size: 20px; margin: 16px 0 24px; }
+  .home-plataforma__chips { grid-template-columns: 1fr; gap: 16px; }
+  .home-plataforma .btn { margin-top: 32px; }
+
+  .home-depoimentos { padding: 30px 0; }
+  .home-depoimento blockquote { padding: 0 0 24px; background: none; font-size: 20px; }
+  .home-depoimento blockquote::after { display: none; }
+  .home-depoimentos__dots { margin-top: 32px; }
+
+  .home-midia { padding: 40px 0; }
+  .home-midia__marquee { --marquee-gap: 24px; }
+  .home-midia__track li { width: 110px; }
+
+  .home-faq { padding: 30px 0; }
+
+  .home-instituicoes { padding: 30px 0 64px; }
+}

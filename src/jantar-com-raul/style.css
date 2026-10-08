@@ -1,0 +1,59 @@
+/* Estilos próprios da landing (portados do shortcode original) */
+/* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FAFAFA; }
+        ::-webkit-scrollbar-thumb { background: #D1D5DB; }
+        ::-webkit-scrollbar-thumb:hover { background: #601417; }
+
+        /* Subtle Fade In Animation */
+        .fade-in { animation: fadeIn 1.5s ease-in-out forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.5s; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Elementor Strict Fixes */
+        #elementor-lp-wrapper {
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Força a logo a nunca explodir de tamanho no Elementor */
+        .logo-fix {
+            width: 45px !important;
+            max-width: 45px !important;
+            min-width: 45px !important;
+            height: auto !important;
+        }
+
+        /* Força as imagens de fundo a cobrir tudo sem quebrar no Elementor */
+        .hero-img-fix, .section-img-fix {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+        
+        .hero-img-fix {
+            object-position: center !important;
+        }
+
+        .hero-overlay-fix {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            pointer-events: none !important;
+        }
+
+        @media (min-width: 768px) {
+            .logo-fix {
+                width: 70px !important;
+                max-width: 70px !important;
+                min-width: 70px !important;
+            }
+        }

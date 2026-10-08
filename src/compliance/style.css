@@ -1,0 +1,20 @@
+.compliance-hero {
+  position: relative;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px var(--gutter) 120px;
+  background: #000 url("/wp-content/uploads/2025/06/photo-1623118176012-9b0c6fa0712d.avif") center / cover no-repeat;
+}
+.compliance-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .81); }
+.compliance-hero__content { position: relative; max-width: 690px; width: 100%; text-align: center; }
+.compliance-hero h1 { color: var(--white); font-size: 48px; font-weight: 600; margin-bottom: 28px; }
+.compliance-hero__links { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+.compliance-hero__links .btn:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
+
+@media (max-width: 767px) {
+  .compliance-hero h1 { font-size: 34px; }
+  .compliance-hero__links { grid-template-columns: 1fr; gap: 16px; }
+  .compliance-hero__links .btn:last-child { width: 100%; }
+}
