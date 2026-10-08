@@ -1,0 +1,7 @@
+node_modules/
+dist/
+_migracao/
+*.mp4
+.DS_Store
+.claude/*
+!.claude/launch.json
