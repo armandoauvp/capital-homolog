@@ -11,7 +11,7 @@
 /* Hero */
 .cr-hero {
   position: relative; min-height: 895px; padding: 236px var(--gutter) 200px;
-  background: var(--black) url("/wp-content/uploads/2025/03/CARTo.jpg") center / cover no-repeat;
+  background: var(--black) url("/wp-content/uploads/2025/03/CARTo-1920.webp") center / cover no-repeat;
 }
 .cr-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .68); }
 .cr-hero__inner { position: relative; max-width: 1200px; margin-inline: auto; }
@@ -92,9 +92,9 @@
   display: flex; flex-direction: column; align-items: center; gap: 20px;
   padding: 30px 30px 15px; background: var(--surface); border-radius: 12px; text-align: center;
 }
-.cr-goal h2 { margin: 0; font: 600 20px/1.2 var(--font-head); color: var(--color-body); }
-.cr-goal p, .cr-goal h3 { margin: 0 0 14px; font: 400 17px/1.5 var(--font-body); color: var(--color-body); }
-.cr-goal h3 { line-height: 1.25; }
+.cr-goal h3 { margin: 0; font: 600 20px/1.2 var(--font-head); color: var(--color-body); }
+.cr-goal p { margin: 0 0 14px; font: 400 17px/1.5 var(--font-body); color: var(--color-body); }
+.cr-goal .cr-goal__tight { line-height: 1.25; }
 .cr-goals__actions { margin-top: 60px; }
 
 /* Comparativo */
@@ -157,7 +157,7 @@
 /* CTA final */
 .cr-cta {
   position: relative; padding: 300px 90px 90px; color: var(--white);
-  background: var(--black) url("/wp-content/uploads/2025/03/photo-1476514525535-07fb3b4ae5f1.avif") center / cover no-repeat;
+  background: var(--black) url("/wp-content/uploads/2025/03/photo-1476514525535-07fb3b4ae5f1-1920.webp") center / cover no-repeat;
 }
 .cr-cta::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .8); }
 .cr-cta__inner { position: relative; max-width: 1200px; margin-inline: auto; }
@@ -183,7 +183,7 @@
   .cr-hero__text { max-width: none; }
 
   .cr-goals__row--3 { grid-template-columns: 1fr 1fr; }
-  .cr-goal h2 { font-size: 25px; }
+  .cr-goal h3 { font-size: 25px; }
 
   .cr-compare__top { flex-direction: column; gap: 32px; }
   .cr-compare__intro { flex-basis: auto; }
@@ -218,8 +218,8 @@
   .cr-goals__row--3, .cr-goals__row--2 { grid-template-columns: 1fr; }
   .cr-goals__row + .cr-goals__row { margin-top: 32px; }
   .cr-goal { align-items: flex-start; padding: 30px; text-align: left; }
-  .cr-goal h2 { font-size: 21px; }
-  .cr-goal p, .cr-goal h3 { font-size: 16px; }
+  .cr-goal h3 { font-size: 21px; }
+  .cr-goal p { font-size: 16px; }
   .cr-goals__actions { margin-top: 40px; }
 
   .cr-compare { padding: 30px 0 60px; }

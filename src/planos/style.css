@@ -5,12 +5,12 @@
 /* Hero */
 .planos-hero {
   position: relative; padding: 236px var(--gutter) 120px; text-align: center; color: var(--white);
-  background: var(--black) url("/wp-content/uploads/2025/06/photo-1623118176012-9b0c6fa0712d.avif") center / cover no-repeat;
+  background: var(--black) url("/wp-content/uploads/2025/06/photo-1623118176012-9b0c6fa0712d-1920.webp") center / cover no-repeat;
 }
 .planos-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .68); }
 .planos-hero__content { position: relative; }
 .planos-hero h1 { font: 600 54px/1.2 var(--font-head); color: var(--white); margin: 0; }
-.planos-hero h2 { font: 300 24px/36px var(--font-head); color: var(--white); margin: 0; }
+.planos-hero__sub { font: 300 24px/36px var(--font-head); color: var(--white); margin: 0; }
 
 /* Introdução */
 .planos-intro p {
@@ -129,7 +129,7 @@
   .planos-hero { padding: 140px var(--gutter) 72px; }
   .planos-hero::before { background: rgba(0, 0, 0, .81); }
   .planos-hero h1 { font-size: 26px; }
-  .planos-hero h2 { font-size: 20px; line-height: 1.5; }
+  .planos-hero__sub { font-size: 20px; line-height: 1.5; }
 
   .planos-intro p { padding: 16px 0 40px; font-size: 16px; line-height: 1.3; letter-spacing: 0; }
 

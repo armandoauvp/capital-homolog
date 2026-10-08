@@ -4,7 +4,7 @@
 .np-hero { position: relative; padding: 240px var(--gutter) 120px; background: #1c1c1c; text-align: center; }
 .np-hero__inner { max-width: 1200px; margin-inline: auto; }
 .np-hero h1 { margin: 0 0 20px; font: 400 51px/1 "DM Serif Text", serif; color: #fff; }
-.np-hero h2 { max-width: 900px; margin: 0 auto; font: 300 24px/36px "Anek Latin", sans-serif; color: #fff; }
+.np-hero__lead { max-width: 900px; margin: 0 auto; font: 300 24px/36px "Anek Latin", sans-serif; color: #fff; }
 
 /* Um sistema completo */
 .np-system { padding: 120px var(--gutter); }
@@ -13,8 +13,8 @@
 .np-system__media { background: #f4f4f4; align-self: flex-start; }
 .np-system__media img { width: 100%; opacity: .1; }
 .np-system__text { display: flex; flex-direction: column; justify-content: center; gap: 20px; }
-.np-system__text h1 { margin: 0; font: 400 40px/1 "DM Serif Text", serif; color: #4c4c4c; }
-.np-system__text h2 { margin: 0; font: 300 17px/36px "Anek Latin", sans-serif; color: #515151; }
+.np-system__title { margin: 0; font: 400 40px/1 "DM Serif Text", serif; color: #4c4c4c; }
+.np-system__lead { margin: 0; font: 300 17px/36px "Anek Latin", sans-serif; color: #515151; }
 
 @media (max-width: 1024px) {
   .np-hero { padding-top: 200px; }
@@ -22,15 +22,15 @@
   .np-system__inner { flex-direction: column; }
   .np-system__media { align-self: stretch; max-width: 585px; width: 100%; margin-inline: auto; }
   .np-system__text { text-align: center; }
-  .np-system__text h1 { font-size: 48px; }
+  .np-system__title { font-size: 48px; }
 }
 @media (max-width: 767px) {
   .np-hero { padding: 120px var(--gutter) 72px; }
   .np-hero h1 { font-size: 24px; }
-  .np-hero h2 { font-size: 20px; line-height: 1.5; }
+  .np-hero__lead { font-size: 20px; line-height: 1.5; }
   .np-system { padding: 72px var(--gutter); }
-  .np-system__text h1 { font-size: 24px; }
-  .np-system__text h2 { font-size: 20px; line-height: 1.5; }
+  .np-system__title { font-size: 24px; }
+  .np-system__lead { font-size: 20px; line-height: 1.5; }
 }
 
 /* ===== Widget portado (regras originais, só escopadas em .np-widget) ===== */

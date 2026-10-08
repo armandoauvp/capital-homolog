@@ -45,11 +45,12 @@
     });
 }());
 
-// Dismiss da tela de carregamento após window.load + tempo mínimo
+// Dismiss da tela de carregamento: sai assim que o DOM está pronto (este módulo roda depois do parse),
+// sem esperar window.load (vídeo, fotos, fontes). O mínimo curto só evita um "piscar" da tela.
 (function () {
     var loader = document.getElementById('gdb-loader');
     if (!loader) return; // Sem loader (ex.: widget Elementor sem a tela)
-    var MIN_MS = 2000;
+    var MIN_MS = 400;
     var t0 = window._gdLoaderStart || Date.now();
     function dismiss() {
         var wait = Math.max(0, MIN_MS - (Date.now() - t0));
@@ -60,8 +61,8 @@
             }, 900);
         }, wait);
     }
-    if (document.readyState === 'complete') { dismiss(); }
-    else { window.addEventListener('load', dismiss, { once: true }); }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', dismiss, { once: true }); }
+    else { dismiss(); }
 }());
 
 // --- TOGGLE ALUNO/NÃO-ALUNO NO FORMULÁRIO ---
@@ -210,25 +211,25 @@ document.getElementById('gdb-root').classList.add('js-loaded');
 
 // --- GALERIA DE FOTOS (MURAL ESPALHADO - IMAGENS OFICIAIS) ---
 const galleryPhotos = [
-    { id: 1, city: 'Goiânia', label: 'Goiânia', state: 'GO', src: 'https://github.com/ProdutosAUVP/gdb-itinerante/raw/main/Goi%C3%A2nia/IMG-20251106-WA0347.jpg.2e9a610eb8b47d988309ff166fead2ec.jpg', rot: '-12deg', mt: 'mt-2 md:mt-0' },
-    { id: 2, city: 'Belo Horizonte', label: 'Belo Horizonte', state: 'MG', src: 'https://github.com/ProdutosAUVP/gdb-itinerante/raw/main/bh%20redux%201.webp', rot: '5deg', mt: 'mt-8 md:mt-16' },
-    { id: 3, city: 'Goiânia', label: 'Goiânia', state: 'GO', src: 'https://github.com/ProdutosAUVP/gdb-itinerante/raw/main/Goi%C3%A2nia/IMG_0793.JPG', rot: '-4deg', isHighlight: true, mt: '-mt-4 md:-mt-10' },
-    { id: 4, city: 'Belo Horizonte', label: 'Belo Horizonte', state: 'MG', src: 'https://github.com/ProdutosAUVP/gdb-itinerante/raw/main/bh%20redux%202.webp', rot: '15deg', mt: 'mt-6 md:mt-12' },
-    { id: 5, city: 'Goiânia', label: 'Goiânia', state: 'GO', src: 'https://github.com/ProdutosAUVP/gdb-itinerante/raw/main/Goi%C3%A2nia/IMG_0796.jpg', rot: '8deg', mt: '-mt-2 md:-mt-6' },
-    { id: 6, city: 'Belo Horizonte', label: 'Belo Horizonte', state: 'MG', src: 'https://github.com/ProdutosAUVP/gdb-itinerante/raw/main/bh%20redux%203.webp', rot: '-10deg', mt: 'mt-4 md:mt-8' },
-    { id: 7, city: 'Goiânia', label: 'Goiânia', state: 'GO', src: 'https://github.com/ProdutosAUVP/gdb-itinerante/raw/main/Goi%C3%A2nia/ImagemdoWhatsAppde2025-07-26s10_48.30_59f20d19.jpg.aab9f398a9048f0538f5208dedd29f4d.jpg.97eec.jpg', rot: '10deg', mt: '-mt-4 md:-mt-8' },
-    { id: 8, city: 'Belo Horizonte', label: 'Belo Horizonte', state: 'MG', src: 'https://github.com/ProdutosAUVP/gdb-itinerante/raw/main/bh%20redux%204.webp', rot: '-7deg', mt: 'mt-2 md:mt-4' },
-    { id: 9, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01389-scaled.jpg', rot: '-9deg', mt: 'mt-4 md:mt-10' },
-    { id: 10, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01181-scaled.jpg', rot: '6deg', mt: '-mt-2 md:-mt-8' },
-    { id: 11, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01208-scaled.jpg', rot: '-6deg', isHighlight: true, mt: 'mt-6 md:mt-12' },
-    { id: 12, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01355-scaled.jpg', rot: '11deg', mt: '-mt-4 md:-mt-10' },
-    { id: 13, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01395-scaled.jpg', rot: '-13deg', mt: 'mt-2 md:mt-6' },
-    { id: 14, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01251-scaled.jpg', rot: '9deg', mt: '-mt-2 md:-mt-4' },
-    { id: 15, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: 'https://cdn.asupernova.com.br/giro%20da%20bolsa%20itinerante/DSC03356.jpg', rot: '-11deg', mt: 'mt-4 md:mt-10' },
-    { id: 16, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: 'https://cdn.asupernova.com.br/giro%20da%20bolsa%20itinerante/DSC03439.jpg', rot: '7deg', mt: '-mt-2 md:-mt-6' },
-    { id: 17, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: 'https://cdn.asupernova.com.br/giro%20da%20bolsa%20itinerante/DSC03937.jpg', rot: '-5deg', isHighlight: true, mt: 'mt-6 md:mt-12' },
-    { id: 18, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: 'https://cdn.asupernova.com.br/giro%20da%20bolsa%20itinerante/DSC03978.jpg', rot: '12deg', mt: '-mt-4 md:-mt-10' },
-    { id: 19, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: 'https://cdn.asupernova.com.br/giro%20da%20bolsa%20itinerante/DSC03671.jpg', rot: '-8deg', mt: 'mt-2 md:mt-6' },
+    { id: 1, city: 'Goiânia', label: 'Goiânia', state: 'GO', src: '/img/giro/goiania-wa0347-1600.webp', rot: '-12deg', mt: 'mt-2 md:mt-0' },
+    { id: 2, city: 'Belo Horizonte', label: 'Belo Horizonte', state: 'MG', src: '/img/giro/bh-redux-1-1600.webp', rot: '5deg', mt: 'mt-8 md:mt-16' },
+    { id: 3, city: 'Goiânia', label: 'Goiânia', state: 'GO', src: '/img/giro/goiania-img0793-1600.webp', rot: '-4deg', isHighlight: true, mt: '-mt-4 md:-mt-10' },
+    { id: 4, city: 'Belo Horizonte', label: 'Belo Horizonte', state: 'MG', src: '/img/giro/bh-redux-2-1600.webp', rot: '15deg', mt: 'mt-6 md:mt-12' },
+    { id: 5, city: 'Goiânia', label: 'Goiânia', state: 'GO', src: '/img/giro/goiania-img0796-1600.webp', rot: '8deg', mt: '-mt-2 md:-mt-6' },
+    { id: 6, city: 'Belo Horizonte', label: 'Belo Horizonte', state: 'MG', src: '/img/giro/bh-redux-3-1600.webp', rot: '-10deg', mt: 'mt-4 md:mt-8' },
+    { id: 7, city: 'Goiânia', label: 'Goiânia', state: 'GO', src: '/img/giro/goiania-whatsapp-1600.webp', rot: '10deg', mt: '-mt-4 md:-mt-8' },
+    { id: 8, city: 'Belo Horizonte', label: 'Belo Horizonte', state: 'MG', src: '/img/giro/bh-redux-4-1600.webp', rot: '-7deg', mt: 'mt-2 md:mt-4' },
+    { id: 9, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01389-scaled-1600.webp', rot: '-9deg', mt: 'mt-4 md:mt-10' },
+    { id: 10, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01181-scaled-1600.webp', rot: '6deg', mt: '-mt-2 md:-mt-8' },
+    { id: 11, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01208-scaled-1600.webp', rot: '-6deg', isHighlight: true, mt: 'mt-6 md:mt-12' },
+    { id: 12, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01355-scaled-1600.webp', rot: '11deg', mt: '-mt-4 md:-mt-10' },
+    { id: 13, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01395-scaled-1600.webp', rot: '-13deg', mt: 'mt-2 md:mt-6' },
+    { id: 14, city: 'São Paulo', label: 'São Paulo', state: 'SP', src: '/wp-content/uploads/2026/07/DSC01251-scaled-1600.webp', rot: '9deg', mt: '-mt-2 md:-mt-4' },
+    { id: 15, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: '/img/giro/DSC03356-1600.webp', rot: '-11deg', mt: 'mt-4 md:mt-10' },
+    { id: 16, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: '/img/giro/DSC03439-1600.webp', rot: '7deg', mt: '-mt-2 md:-mt-6' },
+    { id: 17, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: '/img/giro/DSC03937-1600.webp', rot: '-5deg', isHighlight: true, mt: 'mt-6 md:mt-12' },
+    { id: 18, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: '/img/giro/DSC03978-1600.webp', rot: '12deg', mt: '-mt-4 md:-mt-10' },
+    { id: 19, city: 'Florianópolis', label: 'Florianópolis', state: 'SC', src: '/img/giro/DSC03671-1600.webp', rot: '-8deg', mt: 'mt-2 md:mt-6' },
 ];
 
 const filterOptions = ['Todos', 'Goiânia', 'Belo Horizonte', 'São Paulo', 'Florianópolis'];
@@ -237,10 +238,10 @@ let activeFilter = 'Todos';
 const filterContainer = document.getElementById('filter-container');
 const galleryContainer = document.getElementById('gallery-container');
 
-// Miniatura para a grade: fotos locais têm versão WebP de 800px (scripts/gerar-miniaturas.mjs).
-// Fotos externas seguem com a URL original. O lightbox continua abrindo photo.src (tamanho cheio).
+// Cada foto tem duas versões WebP (scripts/otimizar-imagem.mjs): photo.src é a de 1600 px,
+// aberta no lightbox; a grade usa a de 800 px, de mesmo nome.
 function thumbSrc(src) {
-    return /^\/wp-content\/uploads\/.+-scaled\.jpg$/.test(src) ? src.replace(/\.jpg$/, '-800.webp') : src;
+    return src.replace(/-1600\.webp$/, '-800.webp');
 }
 
 // A montagem das fileiras só muda ao cruzar o breakpoint md (768px); outros resizes

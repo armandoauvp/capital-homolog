@@ -20,7 +20,7 @@
   position: relative; isolation: isolate;
   min-height: 840px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
   padding: 140px var(--gutter) 60px;
-  background: var(--black) url("/wp-content/uploads/2026/03/happy-childrens-silhouettes-sunset-happy-family-children-jumping-sunset-child-care-scaled.jpg") center / cover no-repeat;
+  background: var(--black) url("/wp-content/uploads/2026/03/happy-childrens-silhouettes-sunset-happy-family-children-jumping-sunset-child-care-scaled-1920.webp") center / cover no-repeat;
 }
 .sg-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--black) 100%); }
 .sg-hero__content { width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -49,7 +49,8 @@
 }
 .sg-flip__front { background: var(--surface); }
 .sg-flip__back { background: var(--color-title); color: var(--white); transform: translateY(100%); }
-.sg-flip h3 { font: 600 21px/1.2 "Roboto", sans-serif; margin: 0 0 15px; }
+/* Título do verso é <p> (não repete o heading da frente), com o mesmo visual do h3 */
+.sg-flip h3, .sg-flip .sg-flip__title { font: 600 21px/1.2 "Roboto", sans-serif; margin: 0 0 15px; }
 .sg-flip__front h3 { color: var(--color-title); }
 .sg-flip p { font: 400 14px/1.45 "Roboto", sans-serif; margin: 0; }
 .sg-flip__front p { color: #636363; font-size: 13px; }
@@ -125,7 +126,7 @@
   .sg-flips { grid-template-columns: 1fr; gap: 15px; }
   .sg-flip { height: 200px; }
   .sg-flip__face { padding: 24px; }
-  .sg-flip h3 { font-size: 19px; margin-bottom: 10px; }
+  .sg-flip h3, .sg-flip .sg-flip__title { font-size: 19px; margin-bottom: 10px; }
 
   .sg-about { margin: 30px 0; padding: 30px 0; }
   .sg-about__inner { grid-template-columns: 1fr; gap: 24px; }

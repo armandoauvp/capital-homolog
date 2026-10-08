@@ -2,6 +2,22 @@
   "trailingSlash": true,
   "redirects": [
     { "source": "/elementor-4141", "destination": "/seguros/", "permanent": true },
-    { "source": "/elementor-4141/", "destination": "/seguros/", "permanent": true }
+    { "source": "/elementor-4141/", "destination": "/seguros/", "permanent": true },
+    { "source": "/sitemap_index.xml", "destination": "/sitemap.xml", "permanent": true },
+    { "source": "/page-sitemap.xml", "destination": "/sitemap.xml", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/paginas/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/wp-content/uploads/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }]
+    }
   ]
 }

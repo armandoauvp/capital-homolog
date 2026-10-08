@@ -13,7 +13,7 @@
 .corp-hero__title { margin: 0 0 20px; font: 600 42px/1 var(--font-head); color: var(--white); }
 .corp-hero__text { margin: 0 0 30px; font: 300 23px/39px var(--font-head); color: var(--white); }
 .corp-hero__partner { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.corp-hero__partner h2 { margin: 0; font: 300 23px/39px var(--font-head); color: var(--white); }
+.corp-hero__partner p { margin: 0; font: 300 23px/39px var(--font-head); color: var(--white); }
 .corp-hero__partner img { width: 114px; }
 .corp-hero__btn { margin-top: 90px; }
 
@@ -32,7 +32,7 @@
 .corp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .corp-card { display: flex; flex-direction: column; gap: 20px; padding: 30px; background: var(--surface); border-radius: 12px; }
 .corp-card__icon { width: 23px; height: 23px; fill: #008038; }
-.corp-card h2 { margin: 0; padding-right: 40px; font: 600 22px/1.2 var(--font-head); color: var(--color-body); }
+.corp-card h3 { margin: 0; padding-right: 40px; font: 600 22px/1.2 var(--font-head); color: var(--color-body); }
 .corp-card p { margin: 0 0 14px; font: 400 17px/1.5 var(--font-body); color: var(--color-body); }
 .corp-card p.corp-card__lead { margin: 0; }
 
@@ -81,7 +81,7 @@
 /* Chamada final */
 .corp-cta { display: flex; align-items: center; margin-top: 60px; padding: 10px; background: var(--surface); border-radius: 12px; }
 .corp-cta__left { flex: 1 1 50%; margin: 30px; padding: 10px; }
-.corp-cta__left h1 { margin: 0 0 20px; font: 600 29px/1 var(--font-head); color: var(--color-body); }
+.corp-cta__left h2 { margin: 0 0 20px; font: 600 29px/1 var(--font-head); color: var(--color-body); }
 .corp-cta__left p, .corp-cta__right p { margin: 0 0 14px; font: 400 18px/1.5 var(--font-body); color: var(--color-body); }
 .corp-cta__right { flex: 1 1 50%; margin-right: 60px; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 15px; text-align: center; }
 
@@ -103,9 +103,9 @@
 
   .corp-title { font-size: 45px; line-height: 1.15; }
   .corp-cards { grid-template-columns: 1fr; }
-  .corp-card h2 { font-size: 30px; }
+  .corp-card h3 { font-size: 30px; }
 
-  .corp-cta__left h1 { max-width: 372px; }
+  .corp-cta__left h2 { max-width: 372px; }
   .corp-cta__right { margin-right: 30px; }
 
   .corp-btg__col--ouvidoria { padding-left: 30px; }
@@ -117,7 +117,7 @@
   .corp-hero__title { max-width: 289px; font-size: 23px; }
   .corp-hero__title br { display: none; }
   .corp-hero__text { max-width: 279px; font-size: 18px; line-height: 1.5; }
-  .corp-hero__partner h2 { font-size: 16px; line-height: 1.5; }
+  .corp-hero__partner p { font-size: 16px; line-height: 1.5; }
   .corp-hero__partner img { width: 33%; min-width: 100px; }
   .corp-hero__btn { margin-top: 56px; }
 
@@ -131,13 +131,13 @@
   .corp-products { padding-top: 30px; }
   .corp-title { font-size: 28px; line-height: 1.2; }
   .corp-products__text { margin: 16px 0 32px; font-size: 16px; }
-  .corp-card h2 { font-size: 21px; }
+  .corp-card h3 { font-size: 21px; }
   .corp-card p { font-size: 16px; }
   .corp-title--features br { display: none; }
 
   .corp-cta { flex-direction: column; margin-top: 40px; padding: 30px; gap: 20px; }
   .corp-cta__left, .corp-cta__right { margin: 0; padding: 0; text-align: center; }
-  .corp-cta__left h1 { max-width: none; font-size: 21px; line-height: 1.2; }
+  .corp-cta__left h2 { max-width: none; font-size: 21px; line-height: 1.2; }
   .corp-cta__left p, .corp-cta__right p { font-size: 16px; }
 
   .corp-btg { margin-top: 40px; padding: 30px var(--gutter); }

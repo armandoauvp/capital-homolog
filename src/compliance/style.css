@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   padding: 140px var(--gutter) 120px;
-  background: #000 url("/wp-content/uploads/2025/06/photo-1623118176012-9b0c6fa0712d.avif") center / cover no-repeat;
+  background: #000 url("/wp-content/uploads/2025/06/photo-1623118176012-9b0c6fa0712d-1920.webp") center / cover no-repeat;
 }
 .compliance-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .81); }
 .compliance-hero__content { position: relative; max-width: 690px; width: 100%; text-align: center; }

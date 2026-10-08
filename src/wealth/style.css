@@ -5,7 +5,7 @@
 /* Hero */
 .wl-hero {
   position: relative; isolation: isolate; padding: 92px var(--gutter) 0;
-  background: var(--black) url("/wp-content/uploads/2025/06/aerial-panorama-yacht-race-open-sea-with-sun-reflections-serene-seascape-with-sailing-boat-scaled-1.jpg") center / cover no-repeat;
+  background: var(--black) url("/wp-content/uploads/2025/06/aerial-panorama-yacht-race-open-sea-with-sun-reflections-serene-seascape-with-sailing-boat-scaled-1-1920.webp") center / cover no-repeat;
 }
 .wl-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(0, 0, 0, .7); }
 .wl-hero__content { max-width: 1200px; margin-inline: auto; padding: 140px 0 170px; text-align: center; color: var(--white); }
