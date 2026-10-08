@@ -2,12 +2,12 @@
 .faq-hero {
   position: relative;
   padding: 236px var(--gutter) 120px;
-  background: #38133b url("/wp-content/uploads/2025/12/pig-wide-phone-scaled.webp") center / cover no-repeat;
+  background: #38133b url("/wp-content/uploads/2025/12/pig-wide-phone-scaled-1920.webp") center / cover no-repeat;
 }
 .faq-hero::before { content: ""; position: absolute; inset: 0; background: #38133b; opacity: .89; mix-blend-mode: multiply; }
 .faq-hero__content { position: relative; max-width: var(--container); margin-inline: auto; text-align: center; color: var(--white); }
-.faq-hero h2 { margin: 0 0 16px; font: 300 24px/36px var(--font-head); text-transform: uppercase; }
-.faq-hero h2 a { color: var(--white); text-decoration: none; }
+.faq-hero__kicker { margin: 0 0 16px; font: 300 24px/36px var(--font-head); text-transform: uppercase; }
+.faq-hero__kicker a { color: var(--white); text-decoration: none; }
 .faq-hero h1 { margin: 0; font: 600 54px/1.15 var(--font-head); text-transform: uppercase; color: var(--white); }
 
 /* Bloco branco com o cartão do FAQ subindo sobre o topo */
@@ -22,9 +22,9 @@
   .faq-hero h1 { font-size: 48px; }
 }
 @media (max-width: 767px) {
-  .faq-hero { padding: 136px var(--gutter) 72px; }
+  .faq-hero { padding: 136px var(--gutter) 72px; background-image: url("/wp-content/uploads/2025/12/pig-wide-phone-scaled-960.webp"); }
   .faq-hero::before { opacity: .81; }
-  .faq-hero h2 { font-size: 20px; line-height: 1.5; }
+  .faq-hero__kicker { font-size: 20px; line-height: 1.5; }
   .faq-hero h1 { font-size: 40px; }
   .faq-body { padding: 0 16px 40px; }
   .faq-body__inner { margin-top: -72px; }
@@ -45,14 +45,14 @@
 .aupo-faq__list { padding: 0 1.5rem 1.5rem; }
 
 /* Títulos dos grupos */
-#auvp-faq-widget h3 {
+#auvp-faq-widget .aupo-faq__group {
   margin: 2rem 0 1rem;
   font: 700 16px/1.5 var(--font-head);
   letter-spacing: .05em;
   text-transform: uppercase;
   color: var(--color-title);
 }
-#auvp-faq-widget h3:first-of-type { margin-top: .5rem; }
+#auvp-faq-widget .aupo-faq__group:first-of-type { margin-top: .5rem; }
 .aupo-faq__intro { margin: 0 0 1rem; font-size: 12px; color: var(--gray-500); }
 
 /* Conteúdo das respostas (listas, destaques e rótulos "O que fazer:") */

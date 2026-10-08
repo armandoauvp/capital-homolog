@@ -10,6 +10,9 @@
   text-align: center;
 }
 /* Slideshow e película escura vêm do .ds-slideshow--dim (base.css); padrão .68, mais escura no mobile */
+/* Imagens do slideshow em WebP otimizado (1920 no desktop, 960 no mobile) */
+.legal-hero__slides .ds-slideshow__slide:nth-child(1) { background-image: url("/wp-content/uploads/2025/03/ferramentas.auvp_A_powerful_and_confident_handshake_between_two_df36d78d-8b76-472d-b2e2-bc073247df05-e1739981562181-1920.webp"); }
+.legal-hero__slides .ds-slideshow__slide:nth-child(2) { background-image: url("/wp-content/uploads/2025/03/simon-vollformat-anM1j7xIWo4-unsplash-scaled-1-1920.webp"); }
 .legal-hero__content { position: relative; max-width: var(--container); margin-inline: auto; }
 .legal-hero h1 { margin: 0; font: 600 54px/1.2 var(--font-head); color: var(--white); }
 
@@ -48,6 +51,8 @@
 @media (max-width: 767px) {
   .legal-hero { padding: 152px var(--gutter) 72px; }
   .legal-hero__slides { --slideshow-dim: .81; }
+  .legal-hero__slides .ds-slideshow__slide:nth-child(1) { background-image: url("/wp-content/uploads/2025/03/ferramentas.auvp_A_powerful_and_confident_handshake_between_two_df36d78d-8b76-472d-b2e2-bc073247df05-e1739981562181-960.webp"); }
+  .legal-hero__slides .ds-slideshow__slide:nth-child(2) { background-image: url("/wp-content/uploads/2025/03/simon-vollformat-anM1j7xIWo4-unsplash-scaled-1-960.webp"); }
   .legal-hero h1 { font-size: 26px; }
   .legal { padding: 48px 12px 64px; }
   .legal__card { padding: 20px 24px; }

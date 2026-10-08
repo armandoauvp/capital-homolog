@@ -2,7 +2,7 @@
 .conta-hero {
   position: relative;
   padding: 236px var(--gutter) 116px;
-  background: var(--black) url("/wp-content/uploads/2025/08/arranha-ceus-modernos-comuns-negocio-arranha-ceus-arquitetura-que-levanta-ao-ceu-conceitos-scaled-1.jpg") center / cover no-repeat;
+  background: var(--black) url("/wp-content/uploads/2025/08/arranha-ceus-modernos-comuns-negocio-arranha-ceus-arquitetura-que-levanta-ao-ceu-conceitos-scaled-1-1920.webp") center / cover no-repeat;
 }
 .conta-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .68); }
 .conta-hero__content { position: relative; max-width: var(--container); margin-inline: auto; text-align: center; }
@@ -13,7 +13,7 @@
   .conta-hero h1 { font-size: 48px; }
 }
 @media (max-width: 767px) {
-  .conta-hero { padding: 136px var(--gutter) 72px; }
+  .conta-hero { padding: 136px var(--gutter) 72px; background-image: url("/wp-content/uploads/2025/08/arranha-ceus-modernos-comuns-negocio-arranha-ceus-arquitetura-que-levanta-ao-ceu-conceitos-scaled-1-960.webp"); }
   .conta-hero::before { background: rgba(0, 0, 0, .81); }
   .conta-hero h1 { font-size: 26px; }
 }

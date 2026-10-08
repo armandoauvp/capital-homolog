@@ -1,0 +1,33 @@
+# robots.txt — https://auvpcapital.com.br/
+# Busca tradicional, busca por IA e treino de modelos liberados (decisão de 2026-10).
+# Páginas com noindex (rascunhos, variações, índice interno) ficam acessíveis para os robôs lerem o noindex.
+
+User-agent: *
+Allow: /
+Disallow: /paginas/
+
+# Buscadores e assistentes de IA (busca e resposta em tempo real)
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /paginas/
+
+# Treinamento de modelos
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: meta-externalagent
+Allow: /
+Disallow: /paginas/
+
+Sitemap: https://auvpcapital.com.br/sitemap.xml

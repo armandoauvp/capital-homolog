@@ -6,8 +6,8 @@ Reconstrução das páginas de auvpcapital.com.br (antes em WordPress/Elementor)
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173  (índice de todas as páginas em /paginas/)
-npm run build    # gera dist/ (19 páginas)
+npm run dev      # servidor local (o atalho do app usa a porta 5174); índice de todas as páginas em /paginas/
+npm run build    # gera dist/ (páginas, 404.html e sitemap.xml)
 npm run preview  # serve o dist/
 ```
 
@@ -39,12 +39,21 @@ npm run preview  # serve o dist/
 ## Estrutura
 
 - `src/<slug>/index.html` vira `/<slug>/`. Pastas que começam com `_` não viram página.
-- `src/_partials/` — trechos incluídos com `<!-- @include nome -->` (plugin em `vite.config.js`): `head`, `head-min`, `header`, `footer`, `header-seguros`, `footer-seguros`, `footer-links` (colunas de links compartilhadas pelos dois rodapés; partials podem incluir outros), `calculadora-cambio`.
+- `src/_partials/` — trechos incluídos com `<!-- @include nome -->` (plugin em `vite.config.js`): `head`, `head-min`, `header`, `header-seguros`, `nav` (menu único dos dois cabeçalhos), `footer`, `footer-seguros`, `footer-links` (colunas de links dos dois rodapés), `schema-org` (JSON-LD da empresa e do site), `calculadora-cambio`. Partials podem incluir outros.
 - `public/_shared/base.css` — design system: tokens, cabeçalho, rodapé, botões, FAQ, slideshow, faixa de logos. Fica em `public/` de propósito: assim o Vite não o junta num pacote compartilhado e ele carrega sempre antes do CSS da página, no dev e no build.
 
 - `main.js` (em `src/_shared/`) — GTM `GTM-MRXLB32L` e Clarity `sklzt5vymm` (só no build de produção), repasse de UTMs/ref_nome/product_id/user_id para links de formulário (`form.auvp.com.br/to/nrLyZhc6`, `#checkout`, `#tflink`, `[data-utm]`) e menu mobile.
 - `public/wp-content/uploads/` — imagens e PDFs do WordPress, nos mesmos caminhos de antes.
 - `_migracao/` (fora do git) — material do crawl usado na reconstrução: textos, códigos, prints e guia.
+
+## SEO e buscas por IA
+
+- `public/robots.txt`: busca tradicional, busca por IA e treino de modelos liberados; aponta para o sitemap.
+- `sitemap.xml`: gerado no build por um plugin do `vite.config.js`. Entram só as páginas sem `noindex` e sem canonical para outra URL; `lastmod` = data do último commit da página.
+- `public/llms.txt`: resumo da empresa, produtos e links para assistentes de IA. Atualize quando produtos ou taxas mudarem.
+- `src/404.html`: página de erro (a Vercel a serve sozinha).
+- Cada página tem title, description, canonical, Open Graph e JSON-LD próprios, que referenciam `#organization`/`#website` de `schema-org.html`.
+- `scripts/otimizar-imagem.mjs <arquivo-ou-url> <larguras> [qualidade] [pasta]`: gera versões WebP ao lado da original.
 
 ## Dependências externas mantidas
 

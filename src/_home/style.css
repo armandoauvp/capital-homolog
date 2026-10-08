@@ -28,8 +28,8 @@
 /* Banners com foto de fundo (cartão e offshore) */
 .home-banner { position: relative; overflow: hidden; background: #030303 center / cover no-repeat; padding: 300px 90px 60px; color: var(--white); }
 .home-banner::before { content: ""; position: absolute; inset: 0; background: #030303; opacity: .6; }
-.home-banner--cartao { background-image: url("/wp-content/uploads/2025/03/CARTo.jpg"); }
-.home-banner--offshore { background-image: url("/wp-content/uploads/2025/03/photo-1476514525535-07fb3b4ae5f1.avif"); padding-bottom: 90px; }
+.home-banner--cartao { background-image: url("/wp-content/uploads/2025/03/CARTo-1920.webp"); }
+.home-banner--offshore { background-image: url("/wp-content/uploads/2025/03/photo-1476514525535-07fb3b4ae5f1-1920.webp"); padding-bottom: 90px; }
 .home-banner--offshore::before { background: var(--black); opacity: .8; }
 .home-banner__inner { position: relative; max-width: 1200px; margin-inline: auto; display: flex; flex-direction: column; align-items: flex-start; }
 .home-banner__title { margin: 0; }

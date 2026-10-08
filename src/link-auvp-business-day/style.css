@@ -20,7 +20,7 @@
 
 /* No celular o original troca o bloco por outro com fundo vertical de linhas */
 @media (max-width: 767px) {
-  .bd-hero { padding: 16px 24px 200px; background-image: url("/wp-content/uploads/2025/08/linhas.webp"); background-position: center left; }
+  .bd-hero { padding: 16px 24px 200px; background-image: url("/wp-content/uploads/2025/08/linhas-1080.webp"); background-position: center left; }
   .bd-hero::before { background: rgba(0, 0, 0, .88); }
   .bd-hero__inner { align-items: center; text-align: center; padding-bottom: 72px; }
   .bd-hero__logo { width: 166px; margin: 0; }

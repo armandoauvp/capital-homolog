@@ -1,0 +1,47 @@
+<!-- Dados estruturados da empresa e do site, iguais em todas as páginas. As páginas complementam com o próprio JSON-LD
+     (WebPage, BreadcrumbList, FAQPage, Service...) referenciando "https://auvpcapital.com.br/#organization" e "#website". -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "FinancialService"],
+      "@id": "https://auvpcapital.com.br/#organization",
+      "name": "AUVP Capital",
+      "legalName": "AUVP Consultoria Financeira de Investimentos Ltda.",
+      "taxID": "49.479.036/0001-99",
+      "url": "https://auvpcapital.com.br/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://auvpcapital.com.br/#logo",
+        "url": "https://auvpcapital.com.br/wp-content/uploads/2024/04/cropped-cropped-Frame-24.png",
+        "width": 512,
+        "height": 512,
+        "caption": "AUVP Capital"
+      },
+      "image": { "@id": "https://auvpcapital.com.br/#logo" },
+      "description": "Consultoria de investimentos de Goiânia (GO) que atende clientes em todo o Brasil, com plataforma em parceria com o BTG Pactual: consultoria de investimentos, planejamento patrimonial, crédito, câmbio, seguros e conta PJ.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Deputado Jamel Cecílio, 2690, Qd. B-26, Lt. 16/17, Loja 4, Sala F, Torre Barcelona",
+        "addressLocality": "Goiânia",
+        "addressRegion": "GO",
+        "postalCode": "74810-100",
+        "addressCountry": "BR"
+      },
+      "areaServed": { "@type": "Country", "name": "Brasil" },
+      "sameAs": [
+        "https://www.instagram.com/auvpcapital",
+        "https://www.youtube.com/@AUVPCapital",
+        "https://open.spotify.com/show/4FUAeRg9G0ntPVDuC8Zpjp"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://auvpcapital.com.br/#website",
+      "url": "https://auvpcapital.com.br/",
+      "name": "AUVP Capital",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://auvpcapital.com.br/#organization" }
+    }
+  ]
+}</script>

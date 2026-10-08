@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- @include head -->
+  <title>Página não encontrada - AUVP Capital</title>
+  <meta name="robots" content="noindex, follow">
+  <style>
+    .nf { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 160px var(--gutter) 96px; background: var(--black); color: var(--white); text-align: center; }
+    .nf__content { max-width: 640px; }
+    .nf__code { font: 700 96px/1 var(--font-head); color: var(--gold); margin: 0 0 8px; }
+    .nf h1 { font: 600 40px/1.2 var(--font-head); margin: 0 0 16px; }
+    .nf p { font-size: 20px; color: #d2d2d2; margin: 0 0 32px; }
+    .nf__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+    @media (max-width: 767px) {
+      .nf__code { font-size: 72px; }
+      .nf h1 { font-size: 28px; }
+      .nf p { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="nf">
+      <!-- @include header -->
+      <div class="nf__content">
+        <p class="nf__code" aria-hidden="true">404</p>
+        <h1>Página não encontrada</h1>
+        <p>O endereço pode ter mudado ou não existe mais. Veja as opções abaixo ou use o menu.</p>
+        <div class="nf__actions">
+          <a class="btn btn--primary" href="/">Ir para o início</a>
+          <a class="btn btn--outline" href="/planos/">Conhecer os planos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- @include footer -->
+</body>
+</html>
