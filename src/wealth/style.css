@@ -1,0 +1,123 @@
+/* AUVP Wealth — botões, títulos, FAQ e slideshow vêm do base.css */
+
+.wl-container { width: 100%; max-width: calc(1200px + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* Hero */
+.wl-hero {
+  position: relative; isolation: isolate; padding: 92px var(--gutter) 0;
+  background: var(--black) url("/wp-content/uploads/2025/06/aerial-panorama-yacht-race-open-sea-with-sun-reflections-serene-seascape-with-sailing-boat-scaled-1.jpg") center / cover no-repeat;
+}
+.wl-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(0, 0, 0, .7); }
+.wl-hero__content { max-width: 1200px; margin-inline: auto; padding: 140px 0 170px; text-align: center; color: var(--white); }
+.wl-hero h1 { font: 600 53px/1.2 var(--font-head); color: var(--white); max-width: 1140px; margin: 0 auto 60px; }
+.wl-hero__sub { font: 300 24px/36px var(--font-head); max-width: 1060px; margin: 0 auto 70px; }
+
+/* Sobre */
+.wl-about { background: var(--white); padding: 60px 0; }
+.wl-about__inner { display: flex; justify-content: center; gap: 77px; }
+.wl-about__title { flex: 0 0 39%; max-width: 39%; font: 600 46px/1.2 var(--font-head); color: var(--color-title); margin: 0; text-align: right; }
+.wl-about__text { flex: 0 1 55%; font: 400 19px/34px var(--font-body); color: var(--color-body); }
+.wl-about__text p { margin: 0 0 20px; }
+.wl-about__text p:last-child { margin-bottom: 0; }
+
+/* Soluções */
+.wl-solutions { position: relative; isolation: isolate; background: var(--black); padding: 90px var(--gutter); text-align: center; }
+.wl-solutions::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .7;
+  background: url("/wp-content/uploads/2025/06/Slide-16_9-1-24.png") center / cover no-repeat;
+}
+.wl-solutions__inner { max-width: 1423px; margin-inline: auto; }
+.wl-solutions__title { margin: 0 0 20px; }
+.wl-solutions__sub { font: 300 24px/36px var(--font-head); color: var(--white); margin: 0 0 30px; }
+.wl-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; min-height: 510px; text-align: left; }
+.wl-card { display: flex; flex-direction: column; background: #1c1c1c; padding: 21px; }
+.wl-card img { width: 100%; aspect-ratio: 800 / 448; object-fit: cover; }
+.wl-card h3 { font: 400 22px/1.2 var(--font-head); color: var(--white); padding: 15px 0; margin: 0; }
+.wl-card p, .wl-card__link { font: 400 13px/17px var(--font-body); letter-spacing: .7px; }
+.wl-card p { color: #9b9a9a; margin: 0 0 27px; }
+/* Link de texto do card (não é CTA de botão) */
+.wl-card__link { margin-top: auto; color: var(--gold); text-decoration: none; }
+.wl-card__link:hover { text-decoration: underline; }
+
+/* Diferenciais */
+.wl-why { background: var(--white); padding: 80px 0; }
+.wl-why .ds-title { margin: 0; padding-block: 15px; }
+.wl-why__list {
+  list-style: none; margin: 40px auto 0; padding: 0; max-width: 1100px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 60px; min-height: 300px;
+}
+.wl-why__list li { display: flex; align-items: flex-start; gap: 32px; }
+.wl-why__num { flex: none; font: 800 104px/.9 var(--font-head); color: #5d625c; }
+.wl-why__list p { margin: 0; font: 400 24px/28px var(--font-body); color: var(--color-body); }
+.wl-why__cta { text-align: center; margin-top: 40px; }
+
+/* Legado (fundo com .ds-slideshow) */
+.wl-legacy { position: relative; overflow: hidden; background: var(--black); padding: 70px 0 32px; margin-bottom: 15px; text-align: center; color: var(--white); }
+/* Película escura sobre o slideshow */
+.wl-legacy__bg::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .69); }
+.wl-legacy__inner { position: relative; max-width: calc(1260px + 2 * var(--gutter)); }
+.wl-legacy h2 { margin: 0 0 20px; padding-block: 5px; }
+.wl-legacy p { font: 400 19px/34px var(--font-body); max-width: 1200px; margin: 0 auto; }
+.wl-legacy .btn { margin-top: 20px; }
+
+/* FAQ (componente .faq) */
+.wl-faq { background: var(--white); padding: 120px 0; }
+.wl-faq .ds-title { margin: 0; padding-block: 6px; }
+.wl-faq .faq { margin-top: 40px; }
+.wl-faq .faq__answer ul { margin: 0; padding-left: 24px; }
+.wl-gold-link { color: var(--gold); }
+
+/* Na mídia */
+.wl-media { background: var(--gray-100); padding: 80px 0 70px; }
+.wl-media .ds-title { margin: 0; padding-block: 6px; }
+.wl-media__logos { list-style: none; margin: 30px 0 0; padding: 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.wl-media__logos li { flex: 1 1 0; display: flex; justify-content: center; }
+.wl-media__logos img { width: 100%; max-width: 180px; transition: opacity var(--duration) var(--ease); }
+.wl-media__logos a:hover img { opacity: .7; }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .wl-hero h1 { font-size: 48px; }
+  .wl-about__inner { gap: 40px; padding-inline: 30px; }
+  .wl-about__title { font-size: 45px; }
+  .wl-solutions { margin: 60px 0; }
+  .wl-cards { grid-template-columns: repeat(2, 1fr); }
+  .wl-why__list { gap: 40px 32px; }
+  .wl-why__num { font-size: 90px; }
+  .wl-media__logos { flex-wrap: wrap; justify-content: center; }
+  .wl-media__logos li { flex: 0 0 calc(33.333% - 24px); }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .wl-hero { padding-top: 76px; }
+  .wl-hero__content { padding: 72px 0; }
+  .wl-hero h1 { font-size: 26px; margin-bottom: 24px; }
+  .wl-hero__sub { font-size: 20px; line-height: 1.5; margin-bottom: 32px; }
+  .wl-hero .btn { width: 100%; }
+
+  .wl-about { padding: 0 0 80px; }
+  .wl-about__inner { flex-direction: column; gap: 0; padding-inline: var(--gutter); }
+  .wl-about__title { max-width: none; font-size: 28px; text-align: center; padding: 60px 0 40px; }
+  .wl-about__text { font-size: 16px; line-height: 1.7; text-align: center; }
+
+  .wl-solutions { margin: 0; padding: 48px 20px; }
+  .wl-solutions__sub { font-size: 20px; line-height: 1.3; }
+  .wl-cards { grid-template-columns: 1fr; min-height: 0; }
+
+  .wl-why { padding: 24px 0; }
+  .wl-why .ds-title { padding-block: 0; }
+  .wl-why__list { grid-template-columns: 1fr; gap: 30px; min-height: 0; margin-top: 30px; }
+  .wl-why__list li { gap: 16px; }
+  .wl-why__num { font-size: 55px; min-width: 64px; }
+  .wl-why__list p { font-size: 20px; line-height: 1.3; }
+
+  .wl-legacy { padding: 48px 0 32px; }
+  .wl-legacy h2 { padding-block: 0; }
+  .wl-legacy p { font-size: 16px; line-height: 1.7; }
+
+  .wl-faq { padding: 80px 0; }
+  .wl-faq .ds-title { padding-block: 0; }
+
+  .wl-media { display: none; }
+}

@@ -1,0 +1,55 @@
+/* Layout compartilhado das páginas jurídicas (política de privacidade e termos de uso):
+   hero com slideshow de fundo + cartão com o texto. */
+
+/* Hero */
+.legal-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 236px var(--gutter) 116px;
+  background: var(--black);
+  text-align: center;
+}
+/* Slideshow e película escura vêm do .ds-slideshow--dim (base.css); padrão .68, mais escura no mobile */
+.legal-hero__content { position: relative; max-width: var(--container); margin-inline: auto; }
+.legal-hero h1 { margin: 0; font: 600 54px/1.2 var(--font-head); color: var(--white); }
+
+/* Cartão de texto */
+.legal { padding: 80px 10px 100px; }
+.legal__card {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 20px 50px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .5);
+  background: var(--white);
+  font: 400 16px/1.5 "Roboto", sans-serif;
+  color: var(--black);
+  overflow-wrap: break-word;
+}
+.legal__card p { margin: 0 0 .9rem; }
+.legal__card :is(ol, ul) { margin: 0; padding-left: 40px; }
+.legal__card strong { font-weight: 700; }
+.legal__card a { color: #c36; text-decoration: none; }
+.legal__card a:hover { color: #336; }
+/* Títulos internos mantêm o visual do original: texto em negrito, mesmo corpo do parágrafo */
+.legal__card :is(h2, h3) { margin: 0 0 .9rem; font: 700 16px/1.5 "Roboto", sans-serif; color: inherit; }
+.legal__card ol.legal__section h3 { margin: 0; }
+/* Linha de sublinhados: corta em vez de quebrar em telas estreitas */
+.legal__card p.legal__rule { overflow: hidden; white-space: nowrap; }
+
+/* Termos de uso: título colado ao parágrafo seguinte, como no original (título + <br>) */
+.legal--compact h2 { margin: 0; }
+.legal--compact h2.legal__spaced { margin: 24px 0 .9rem; }
+
+@media (max-width: 1024px) {
+  .legal-hero h1 { font-size: 48px; }
+}
+
+@media (max-width: 767px) {
+  .legal-hero { padding: 152px var(--gutter) 72px; }
+  .legal-hero__slides { --slideshow-dim: .81; }
+  .legal-hero h1 { font-size: 26px; }
+  .legal { padding: 48px 12px 64px; }
+  .legal__card { padding: 20px 24px; }
+  .legal__card :is(ol, ul) { padding-left: 28px; }
+}

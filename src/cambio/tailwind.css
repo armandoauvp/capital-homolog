@@ -1,0 +1,5 @@
+/* Utilitários Tailwind da calculadora (gerados no build; antes vinham do cdn.tailwindcss.com). */
+@config "./tailwind.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
