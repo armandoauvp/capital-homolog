@@ -6,7 +6,7 @@ Reconstrução das páginas de auvpcapital.com.br (antes em WordPress/Elementor)
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173  (índice de todas as páginas em /_mapa/)
+npm run dev      # http://localhost:5173  (índice de todas as páginas em /paginas/)
 npm run build    # gera dist/ (19 páginas)
 npm run preview  # serve o dist/
 ```
@@ -34,6 +34,7 @@ npm run preview  # serve o dist/
 | `/politica-de-privacidade/` | `src/politica-de-privacidade/` (+ `src/_legal/`) |
 | `/termos-de-uso/` | `src/termos-de-uso/` (+ `src/_legal/`) |
 | `/elementor-4141/` | `src/elementor-4141/` → redireciona para `/seguros/` (301 em `vercel.json`) |
+| `/paginas/` | `src/paginas/` — índice navegável de todas as páginas, com busca (noindex). Miniaturas em `public/paginas/miniaturas/`, geradas por `scripts/gerar-miniaturas-paginas.mjs` a partir dos prints em `_migracao/` |
 
 ## Estrutura
 
